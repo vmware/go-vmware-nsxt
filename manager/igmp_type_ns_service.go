@@ -5,7 +5,14 @@
 
 package manager
 
-type IgmpTypeNsService struct {
+type IgmpTypeNsServiceEntry struct {
 
 	ResourceType string `json:"resource_type"`
+}
+
+type IgmpTypeNsService struct {
+
+        NsService
+
+        NsserviceElement IgmpTypeNsServiceEntry `json:"nsservice_element"`
 }

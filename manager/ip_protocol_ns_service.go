@@ -5,9 +5,16 @@
 
 package manager
 
-type IpProtocolNsService struct {
+type IpProtocolNsServiceEntry struct {
 
 	ResourceType string `json:"resource_type"`
 
 	ProtocolNumber int64 `json:"protocol_number"`
+}
+
+type IpProtocolNsService struct {
+
+        NsService
+
+        NsserviceElement IpProtocolNsServiceEntry `json:"nsservice_element"`
 }

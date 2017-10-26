@@ -5,7 +5,7 @@
 
 package manager
 
-type AlgTypeNsService struct {
+type AlgTypeNsServiceEntry struct {
 
 	ResourceType string `json:"resource_type"`
 
@@ -15,4 +15,11 @@ type AlgTypeNsService struct {
 	DestinationPorts []string `json:"destination_ports,omitempty"`
 
 	SourcePorts []string `json:"source_ports,omitempty"`
+}
+
+type AlgTypeNsService struct {
+
+        NsService
+
+        NsserviceElement AlgTypeNsServiceEntry `json:"nsservice_element"`
 }

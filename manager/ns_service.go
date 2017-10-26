@@ -55,5 +55,5 @@ type NsService struct {
 	DefaultService bool `json:"default_service,omitempty"`
 
 	// An NSService Element that describes traffic corresponding to this NSService
-	NsserviceElement interface{} `json:"nsservice_element"`
+	//NsserviceElement interface{} `json:"nsservice_element"`
 }

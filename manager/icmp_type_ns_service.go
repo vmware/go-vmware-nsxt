@@ -5,7 +5,7 @@
 
 package manager
 
-type IcmpTypeNsService struct {
+type IcmpTypeNsServiceEntry struct {
 
 	ResourceType string `json:"resource_type"`
 
@@ -16,4 +16,11 @@ type IcmpTypeNsService struct {
 	IcmpType int64 `json:"icmp_type,omitempty"`
 
 	Protocol string `json:"protocol"`
+}
+
+type IcmpTypeNsService struct {
+
+        NsService
+
+        NsserviceElement IcmpTypeNsServiceEntry `json:"nsservice_element"`
 }

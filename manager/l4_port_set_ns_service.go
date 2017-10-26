@@ -5,7 +5,7 @@
 
 package manager
 
-type L4PortSetNsService struct {
+type L4PortSetNsServiceEntry struct {
 
 	ResourceType string `json:"resource_type"`
 
@@ -14,4 +14,11 @@ type L4PortSetNsService struct {
 	L4Protocol string `json:"l4_protocol"`
 
 	SourcePorts []string `json:"source_ports,omitempty"`
+}
+
+type L4PortSetNsService struct {
+
+        NsService
+
+        NsserviceElement L4PortSetNsServiceEntry `json:"nsservice_element"`
 }
