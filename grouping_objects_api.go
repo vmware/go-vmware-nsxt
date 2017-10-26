@@ -354,7 +354,7 @@ func (a *GroupingObjectsApiService) CreateNSService(ctx context.Context, nSServi
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-                successPayload     manager.NsService
+		successPayload     manager.NsService
 	)
 
 	// create path and map variables
@@ -2791,7 +2791,6 @@ func (a *GroupingObjectsApiService) ReadIcmpTypeNSService(ctx context.Context, n
 	return successPayload, localVarHttpResponse, err
 }
 
-
 /* GroupingObjectsApiService Read IgmpTypeNSService
 Returns information about the specified IgmpTypeNSService
 * @param ctx context.Context Authentication Context
@@ -2853,7 +2852,6 @@ func (a *GroupingObjectsApiService) ReadIgmpTypeNSService(ctx context.Context, n
 
 	return successPayload, localVarHttpResponse, err
 }
-
 
 /* GroupingObjectsApiService Read AlgTypeNSService
 Returns information about the specified AlgTypeNSService
@@ -3040,7 +3038,6 @@ func (a *GroupingObjectsApiService) ReadIpProtocolNSService(ctx context.Context,
 
 	return successPayload, localVarHttpResponse, err
 }
-
 
 /* GroupingObjectsApiService Read NSServiceGroup
 Returns information about the specified NSServiceGroup
@@ -3435,7 +3432,7 @@ func (a *GroupingObjectsApiService) UpdateL4PortSetNSService(ctx context.Context
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-                successPayload     manager.L4PortSetNsService
+		successPayload     manager.L4PortSetNsService
 	)
 
 	// create path and map variables
@@ -3488,7 +3485,6 @@ func (a *GroupingObjectsApiService) UpdateL4PortSetNSService(ctx context.Context
 	return successPayload, localVarHttpResponse, err
 }
 
-
 /* GroupingObjectsApiService Update IcmpTypeNSService
 Updates the specified NSService. Modifiable parameters include the description, display_name and the IcmpTypeNSService element. The system defined NSServices can&#39;t be modified
 * @param ctx context.Context Authentication Context
@@ -3501,7 +3497,7 @@ func (a *GroupingObjectsApiService) UpdateIcmpTypeNSService(ctx context.Context,
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-                successPayload     manager.IcmpTypeNsService
+		successPayload     manager.IcmpTypeNsService
 	)
 
 	// create path and map variables
@@ -3566,7 +3562,7 @@ func (a *GroupingObjectsApiService) UpdateIgmpTypeNSService(ctx context.Context,
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-                successPayload     manager.IgmpTypeNsService
+		successPayload     manager.IgmpTypeNsService
 	)
 
 	// create path and map variables
@@ -3631,7 +3627,7 @@ func (a *GroupingObjectsApiService) UpdateAlgTypeNSService(ctx context.Context, 
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-                successPayload     manager.AlgTypeNsService
+		successPayload     manager.AlgTypeNsService
 	)
 
 	// create path and map variables
@@ -3696,7 +3692,7 @@ func (a *GroupingObjectsApiService) UpdateEtherTypeNSService(ctx context.Context
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-                successPayload     manager.EtherTypeNsService
+		successPayload     manager.EtherTypeNsService
 	)
 
 	// create path and map variables
@@ -3761,7 +3757,7 @@ func (a *GroupingObjectsApiService) UpdateIpProtocolNSService(ctx context.Contex
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-                successPayload     manager.IpProtocolNsService
+		successPayload     manager.IpProtocolNsService
 	)
 
 	// create path and map variables
