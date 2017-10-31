@@ -392,7 +392,6 @@ func (c *APIClient) prepareRequest(
 
 		// Basic HTTP Authentication
 		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
-			fmt.Printf("basic auth!!\n")
 			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
 		}
 
