@@ -68,6 +68,8 @@ notification when you git push.
 
 ### Code Style
 
+Please run "go gmt" on all go source files before submitting.
+
 ### Formatting Commit Messages
 
 We follow the conventions on [How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/).
