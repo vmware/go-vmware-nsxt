@@ -8,12 +8,15 @@ package nsxt
 import (
 	"bytes"
 	"context"
+	"crypto/tls"
+	"crypto/x509"
 	"encoding/json"
 	"encoding/xml"
 	"errors"
 	"fmt"
 	"golang.org/x/oauth2"
 	"io"
+	"io/ioutil"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -70,11 +73,13 @@ type service struct {
 }
 
 func GetContext(cfg *Configuration) context.Context {
-	// TODO: client auth, XSRF
-	auth := BasicAuth{UserName: cfg.UserName,
-		Password: cfg.Password}
-	ctx := context.WithValue(context.Background(), ContextBasicAuth, auth)
-	return ctx
+	if len(cfg.ClientAuthCertFile) == 0 {
+		auth := BasicAuth{UserName: cfg.UserName,
+			Password: cfg.Password}
+		return context.WithValue(context.Background(), ContextBasicAuth, auth)
+	}
+
+	return context.Background()
 }
 
 //Perform 'session create' and save the xsrf & session id to the default headers
@@ -108,11 +113,11 @@ func GetDefaultHeaders(client *APIClient) error {
 		fileName,
 		fileBytes)
 	if err != nil {
-		return fmt.Errorf("Failed to create a session: %s.", err)
+		return fmt.Errorf("Failed to create session: %s.", err)
 	}
 	response, err := client.callAPI(r)
 	if err != nil {
-		return fmt.Errorf("Failed to create a session: %s.", err)
+		return fmt.Errorf("Failed to create session: %s.", err)
 	}
 
 	if client.cfg.DefaultHeader == nil {
@@ -137,18 +142,68 @@ func GetDefaultHeaders(client *APIClient) error {
 	return nil
 }
 
+func InitHttpClient(cfg *Configuration) error {
+
+	if len(cfg.ClientAuthCertFile) == 0 && len(cfg.CAFile) == 0 {
+		cfg.HTTPClient = http.DefaultClient
+		return nil
+	}
+
+	tlsConfig := &tls.Config{
+		//MinVersion:               tls.VersionTLS12,
+		//PreferServerCipherSuites: true,
+		InsecureSkipVerify: cfg.Insecure,
+	}
+
+	if len(cfg.ClientAuthCertFile) > 0 {
+		cert, err := tls.LoadX509KeyPair(cfg.ClientAuthCertFile,
+			cfg.ClientAuthKeyFile)
+		if err != nil {
+			return err
+		}
+
+		tlsConfig.Certificates = []tls.Certificate{cert}
+	}
+
+	if len(cfg.CAFile) > 0 {
+		caCert, err := ioutil.ReadFile(cfg.CAFile)
+		if err != nil {
+			return err
+		}
+
+		caCertPool := x509.NewCertPool()
+		caCertPool.AppendCertsFromPEM(caCert)
+
+		tlsConfig.RootCAs = caCertPool
+	}
+
+	tlsConfig.BuildNameToCertificate()
+
+	transport := &http.Transport{TLSClientConfig: tlsConfig}
+	cfg.HTTPClient = &http.Client{Transport: transport}
+	return nil
+}
+
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) *APIClient {
+func NewAPIClient(cfg *Configuration) (*APIClient, error) {
+
 	if cfg.HTTPClient == nil {
-		cfg.HTTPClient = http.DefaultClient
+		err := InitHttpClient(cfg)
+
+		if cfg.HTTPClient == nil {
+			return nil, err
+		}
 	}
 
 	c := &APIClient{}
 	c.cfg = cfg
 	c.Context = GetContext(cfg)
 	c.common.client = c
-	GetDefaultHeaders(c)
+	err := GetDefaultHeaders(c)
+	if err != nil {
+		return nil, err
+	}
 
 	// API Services
 	c.AaaApi = (*AaaApiService)(&c.common)
@@ -175,7 +230,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TroubleshootingAndMonitoringApi = (*TroubleshootingAndMonitoringApiService)(&c.common)
 	c.UpgradeApi = (*UpgradeApiService)(&c.common)
 
-	return c
+	return c, nil
 }
 
 func atoi(in string) (int, error) {

@@ -25,14 +25,18 @@ type APIKey struct {
 }
 
 type Configuration struct {
-	BasePath      string            `json:"basePath,omitempty"`
-	Host          string            `json:"host,omitempty"`
-	Scheme        string            `json:"scheme,omitempty"`
-	UserName      string            `json:"username,omitempty"`
-	Password      string            `json:"password,omitempty"`
-	DefaultHeader map[string]string `json:"defaultHeader,omitempty"`
-	UserAgent     string            `json:"userAgent,omitempty"`
-	HTTPClient    *http.Client
+	BasePath           string `json:"basePath,omitempty"`
+	Host               string `json:"host,omitempty"`
+	Scheme             string `json:"scheme,omitempty"`
+	UserName           string
+	Password           string
+	DefaultHeader      map[string]string `json:"defaultHeader,omitempty"`
+	UserAgent          string            `json:"userAgent,omitempty"`
+	ClientAuthCertFile string
+	ClientAuthKeyFile  string
+	CAFile             string
+	Insecure           bool
+	HTTPClient         *http.Client
 }
 
 func NewConfiguration() *Configuration {
