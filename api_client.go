@@ -144,11 +144,6 @@ func GetDefaultHeaders(client *APIClient) error {
 
 func InitHttpClient(cfg *Configuration) error {
 
-	if len(cfg.ClientAuthCertFile) == 0 && len(cfg.CAFile) == 0 {
-		cfg.HTTPClient = http.DefaultClient
-		return nil
-	}
-
 	tlsConfig := &tls.Config{
 		//MinVersion:               tls.VersionTLS12,
 		//PreferServerCipherSuites: true,
