@@ -11,8 +11,10 @@ import (
 	"fmt"
 	"github.com/vmware/go-vmware-nsxt/manager"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"strings"
+        "log"
 )
 
 // Linger please
@@ -549,6 +551,345 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterPort(ctx contex
 		localVarFileBytes  []byte
 		successPayload     manager.LogicalRouterPort
 	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* LogicalRoutingAndServicesApiService Create a Logical Router Uplink Port
+Creates a logical router uplink port on TIER0 router. The required parameters include logical_router_id (the router
+to which each logical router port is assigned). The service_bindings parameter is optional.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPort
+@return manager.LogicalRouterUpLinkPort*/
+func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterUpLinkPort(ctx context.Context, logicalRouterPort manager.LogicalRouterUpLinkPort) (manager.LogicalRouterUpLinkPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Post")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterUpLinkPort
+	)
+
+        // set resource type for this type-specific API
+        logicalRouterPort.ResourceType = "LogicalRouterUpLinkPort"
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+
+/* LogicalRoutingAndServicesApiService Create a Logical Router Port
+Creates a logical router port on TIER0 router. This is the port where the LogicalRouterLinkPortOnTier1 of TIER1
+logical router connects to. The required parameters include logical_router_id (the router to which each logical
+router port is assigned). The service_bindings parameter is optional.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPort
+@return manager.LogicalRouterLinkPortOnTier0*/
+func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterLinkPortOnTier0(ctx context.Context, logicalRouterPort manager.LogicalRouterLinkPortOnTier0) (manager.LogicalRouterLinkPortOnTier0, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Post")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLinkPortOnTier0
+	)
+
+        // set resource type for this type-specific API
+        logicalRouterPort.ResourceType = "LogicalRouterLinkPortOnTIER1"
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* LogicalRoutingAndServicesApiService Create a Logical Router Port
+Creates a logical router port on TIER1 router. This is the port where the LogicalRouterLinkPortOnTier0 of TIER0
+logical router connects to. The required parameters include logical_router_id (the router to which each logical
+router port is assigned). The service_bindings parameter is optional.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPort
+@return manager.LogicalRouterLinkPortOnTier1*/
+func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterLinkPortOnTier1(ctx context.Context, logicalRouterPort manager.LogicalRouterLinkPortOnTier1) (manager.LogicalRouterLinkPortOnTier1, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Post")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLinkPortOnTier1
+	)
+
+        // set resource type for this type-specific API
+        logicalRouterPort.ResourceType = "LogicalRouterLinkPortOnTIER1"
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* LogicalRoutingAndServicesApiService Create a Logical Router DownLink Port
+Creates a logical router port on TIER1 router. This is the port for connected subnets on the logical router.
+The required parameters include logical_router_id (the router to which each logical router port is assigned).
+The service_bindings parameter is optional.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPort
+@return manager.LogicalRouterDownLinkPort*/
+func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterDownLinkPort(ctx context.Context, logicalRouterPort manager.LogicalRouterDownLinkPort) (manager.LogicalRouterDownLinkPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Post")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterDownLinkPort
+	)
+
+        // set resource type for this type-specific API
+        logicalRouterPort.ResourceType = "LogicalRouterDownLinkPort"
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+/* LogicalRoutingAndServicesApiService Create a Logical Router Loopback Port
+Creates a logical router loopback port. This is a loopback port for logical router component which is placed
+on chosen edge cluster member. The required parameters include logical_router_id (the router to which each logical
+router port is assigned). The service_bindings parameter is optional.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPort
+@return manager.LogicalRouterLoopbackPort*/
+func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterLoopbackPort(ctx context.Context, logicalRouterPort manager.LogicalRouterLoopbackPort) (manager.LogicalRouterLoopbackPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Post")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLoopbackPort
+	)
+
+        // set resource type for this type-specific API
+        logicalRouterPort.ResourceType = "LogicalRouterLoopbackPort"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
@@ -4800,6 +5141,320 @@ func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterPort(ctx context.
 	return successPayload, localVarHttpResponse, err
 }
 
+/* LogicalRoutingAndServicesApiService Read Logical Router UpLink Port
+Returns information about the specified logical router port.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@return manager.LogicalRouterUpLinkPort*/
+func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterUpLinkPort(ctx context.Context, logicalRouterPortId string) (manager.LogicalRouterUpLinkPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterUpLinkPort
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+
+/* LogicalRoutingAndServicesApiService Read Logical Router Link Port On Tier0
+Returns information about the specified logical router port.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@return manager.LogicalRouterLinkPortOnTier0*/
+func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterLinkPortOnTier0(ctx context.Context, logicalRouterPortId string) (manager.LogicalRouterLinkPortOnTier0, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLinkPortOnTier0
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+
+/* LogicalRoutingAndServicesApiService Read Logical Router Link Port On Tier1
+Returns information about the specified logical router port.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@return manager.LogicalRouterLinkPortOnTier1*/
+func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterLinkPortOnTier1(ctx context.Context, logicalRouterPortId string) (manager.LogicalRouterLinkPortOnTier1, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLinkPortOnTier1
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+
+/* LogicalRoutingAndServicesApiService Read Logical Router Down Link Port
+Returns information about the specified logical router port.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@return manager.LogicalRouterDownLinkPort*/
+func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterDownLinkPort(ctx context.Context, logicalRouterPortId string) (manager.LogicalRouterDownLinkPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterDownLinkPort
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* LogicalRoutingAndServicesApiService Read Logical Router Loopback Port
+Returns information about the specified logical router port.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@return manager.LogicalRouterLoopbackPort*/
+func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterLoopbackPort(ctx context.Context, logicalRouterPortId string) (manager.LogicalRouterLoopbackPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLoopbackPort
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+
 /* LogicalRoutingAndServicesApiService Read the Redistribution Configuration on a Logical Router
 Returns information about configured route redistribution for the specified logical router.
 * @param ctx context.Context Authentication Context
@@ -6025,6 +6680,334 @@ func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterPort(ctx contex
 
 	return successPayload, localVarHttpResponse, err
 }
+
+/* LogicalRoutingAndServicesApiService Update a Logical Router UpLink Port
+Modifies the specified logical router port. Required parameters include the resource_type and logical_router_id. Modifiable parameters include the resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort, LogicalRouterLinkPort, LogicalRouterLoopbackPort), logical_router_id (to reassign the port to a different router), and service_bindings.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@param logicalRouterPort
+@return manager.LogicalRouterUpLinkPort*/
+func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterUpLinkPort(ctx context.Context, logicalRouterPortId string, logicalRouterPort manager.LogicalRouterUpLinkPort) (manager.LogicalRouterUpLinkPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Put")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterUpLinkPort
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* LogicalRoutingAndServicesApiService Update a Logical Router Link Port On Tier0
+Modifies the specified logical router port. Required parameters include the resource_type and logical_router_id. Modifiable parameters include the resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort, LogicalRouterLinkPort, LogicalRouterLoopbackPort), logical_router_id (to reassign the port to a different router), and service_bindings.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@param logicalRouterPort
+@return manager.LogicalRouterLinkPortOnTier0*/
+func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterLinkPortOnTier0(ctx context.Context, logicalRouterPortId string, logicalRouterPort manager.LogicalRouterLinkPortOnTier0) (manager.LogicalRouterLinkPortOnTier0, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Put")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLinkPortOnTier0
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* LogicalRoutingAndServicesApiService Update a Logical Router Link Port On Tier1
+Modifies the specified logical router port. Required parameters include the resource_type and logical_router_id. Modifiable parameters include the resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort, LogicalRouterLinkPort, LogicalRouterLoopbackPort), logical_router_id (to reassign the port to a different router), and service_bindings.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@param logicalRouterPort
+@return manager.LogicalRouterLinkPortOnTier1*/
+func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterLinkPortOnTier1(ctx context.Context, logicalRouterPortId string, logicalRouterPort manager.LogicalRouterLinkPortOnTier1) (manager.LogicalRouterLinkPortOnTier1, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Put")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLinkPortOnTier1
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+
+/* LogicalRoutingAndServicesApiService Update a Logical Router DownLink Port
+Modifies the specified logical router port. Required parameters include the resource_type and logical_router_id. Modifiable parameters include the resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort, LogicalRouterLinkPort, LogicalRouterLoopbackPort), logical_router_id (to reassign the port to a different router), and service_bindings.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@param logicalRouterPort
+@return manager.LogicalRouterDownLinkPort*/
+func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterDownLinkPort(ctx context.Context, logicalRouterPortId string, logicalRouterPort manager.LogicalRouterDownLinkPort) (manager.LogicalRouterDownLinkPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Put")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterDownLinkPort
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
+
+/* LogicalRoutingAndServicesApiService Update a Logical Router Loopback Port
+Modifies the specified logical router port. Required parameters include the resource_type and logical_router_id. Modifiable parameters include the resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort, LogicalRouterLinkPort, LogicalRouterLoopbackPort), logical_router_id (to reassign the port to a different router), and service_bindings.
+* @param ctx context.Context Authentication Context
+@param logicalRouterPortId
+@param logicalRouterPort
+@return manager.LogicalRouterLoopbackPort*/
+func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterLoopbackPort(ctx context.Context, logicalRouterPortId string, logicalRouterPort manager.LogicalRouterLoopbackPort) (manager.LogicalRouterLoopbackPort, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Put")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     manager.LogicalRouterLoopbackPort
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/logical-router-ports/{logical-router-port-id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"logical-router-port-id"+"}", fmt.Sprintf("%v", logicalRouterPortId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &logicalRouterPort
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
 
 /* LogicalRoutingAndServicesApiService Update a specific NAT rule from a given logical router
 Update a specific NAT rule from a given logical router.

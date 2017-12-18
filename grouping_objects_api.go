@@ -420,6 +420,9 @@ func (a *GroupingObjectsApiService) CreateL4PortSetNSService(ctx context.Context
 		successPayload     manager.L4PortSetNsService
 	)
 
+        // set resource type for this type-specific API
+        nSService.ResourceType = "L4PortSetNSService"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/ns-services"
 
@@ -482,6 +485,9 @@ func (a *GroupingObjectsApiService) CreateIcmpTypeNSService(ctx context.Context,
 		localVarFileBytes  []byte
 		successPayload     manager.IcmpTypeNsService
 	)
+
+        // set resource type for this type-specific API
+        nSService.ResourceType = "ICMPTypeNSService"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/ns-services"
@@ -546,6 +552,9 @@ func (a *GroupingObjectsApiService) CreateAlgTypeNSService(ctx context.Context, 
 		successPayload     manager.AlgTypeNsService
 	)
 
+        // set resource type for this type-specific API
+        nSService.ResourceType = "ALGTypeNSService"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/ns-services"
 
@@ -609,6 +618,9 @@ func (a *GroupingObjectsApiService) CreateEtherTypeNSService(ctx context.Context
 		successPayload     manager.EtherTypeNsService
 	)
 
+        // set resource type for this type-specific API
+        nSService.ResourceType = "EtherTypeNSService"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/ns-services"
 
@@ -671,6 +683,9 @@ func (a *GroupingObjectsApiService) CreateIpProtocolNSService(ctx context.Contex
 		localVarFileBytes  []byte
 		successPayload     manager.IpProtocolNsService
 	)
+
+        // set resource type for this type-specific API
+        nSService.ResourceType = "IPProtocolNSService"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/ns-services"
