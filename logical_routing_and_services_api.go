@@ -10,9 +10,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/vmware/go-vmware-nsxt/manager"
-	"log"
 	"net/http"
-	"net/http/httputil"
 	"net/url"
 	"strings"
 )
