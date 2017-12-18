@@ -10,11 +10,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/vmware/go-vmware-nsxt/manager"
+	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
 	"strings"
-        "log"
 )
 
 // Linger please
@@ -616,8 +616,8 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterUpLinkPort(ctx 
 		successPayload     manager.LogicalRouterUpLinkPort
 	)
 
-        // set resource type for this type-specific API
-        logicalRouterPort.ResourceType = "LogicalRouterUpLinkPort"
+	// set resource type for this type-specific API
+	logicalRouterPort.ResourceType = "LogicalRouterUpLinkPort"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
@@ -668,7 +668,6 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterUpLinkPort(ctx 
 	return successPayload, localVarHttpResponse, err
 }
 
-
 /* LogicalRoutingAndServicesApiService Create a Logical Router Port
 Creates a logical router port on TIER0 router. This is the port where the LogicalRouterLinkPortOnTier1 of TIER1
 logical router connects to. The required parameters include logical_router_id (the router to which each logical
@@ -685,8 +684,8 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterLinkPortOnTier0
 		successPayload     manager.LogicalRouterLinkPortOnTier0
 	)
 
-        // set resource type for this type-specific API
-        logicalRouterPort.ResourceType = "LogicalRouterLinkPortOnTIER1"
+	// set resource type for this type-specific API
+	logicalRouterPort.ResourceType = "LogicalRouterLinkPortOnTIER1"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
@@ -753,8 +752,8 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterLinkPortOnTier1
 		successPayload     manager.LogicalRouterLinkPortOnTier1
 	)
 
-        // set resource type for this type-specific API
-        logicalRouterPort.ResourceType = "LogicalRouterLinkPortOnTIER1"
+	// set resource type for this type-specific API
+	logicalRouterPort.ResourceType = "LogicalRouterLinkPortOnTIER1"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
@@ -821,8 +820,8 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterDownLinkPort(ct
 		successPayload     manager.LogicalRouterDownLinkPort
 	)
 
-        // set resource type for this type-specific API
-        logicalRouterPort.ResourceType = "LogicalRouterDownLinkPort"
+	// set resource type for this type-specific API
+	logicalRouterPort.ResourceType = "LogicalRouterDownLinkPort"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
@@ -872,6 +871,7 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterDownLinkPort(ct
 
 	return successPayload, localVarHttpResponse, err
 }
+
 /* LogicalRoutingAndServicesApiService Create a Logical Router Loopback Port
 Creates a logical router loopback port. This is a loopback port for logical router component which is placed
 on chosen edge cluster member. The required parameters include logical_router_id (the router to which each logical
@@ -888,8 +888,8 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterLoopbackPort(ct
 		successPayload     manager.LogicalRouterLoopbackPort
 	)
 
-        // set resource type for this type-specific API
-        logicalRouterPort.ResourceType = "LogicalRouterLoopbackPort"
+	// set resource type for this type-specific API
+	logicalRouterPort.ResourceType = "LogicalRouterLoopbackPort"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
@@ -5203,7 +5203,6 @@ func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterUpLinkPort(ctx co
 	return successPayload, localVarHttpResponse, err
 }
 
-
 /* LogicalRoutingAndServicesApiService Read Logical Router Link Port On Tier0
 Returns information about the specified logical router port.
 * @param ctx context.Context Authentication Context
@@ -5266,7 +5265,6 @@ func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterLinkPortOnTier0(c
 	return successPayload, localVarHttpResponse, err
 }
 
-
 /* LogicalRoutingAndServicesApiService Read Logical Router Link Port On Tier1
 Returns information about the specified logical router port.
 * @param ctx context.Context Authentication Context
@@ -5328,7 +5326,6 @@ func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterLinkPortOnTier1(c
 
 	return successPayload, localVarHttpResponse, err
 }
-
 
 /* LogicalRoutingAndServicesApiService Read Logical Router Down Link Port
 Returns information about the specified logical router port.
@@ -5453,7 +5450,6 @@ func (a *LogicalRoutingAndServicesApiService) ReadLogicalRouterLoopbackPort(ctx 
 
 	return successPayload, localVarHttpResponse, err
 }
-
 
 /* LogicalRoutingAndServicesApiService Read the Redistribution Configuration on a Logical Router
 Returns information about configured route redistribution for the specified logical router.
@@ -6876,7 +6872,6 @@ func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterLinkPortOnTier1
 	return successPayload, localVarHttpResponse, err
 }
 
-
 /* LogicalRoutingAndServicesApiService Update a Logical Router DownLink Port
 Modifies the specified logical router port. Required parameters include the resource_type and logical_router_id. Modifiable parameters include the resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort, LogicalRouterLinkPort, LogicalRouterLoopbackPort), logical_router_id (to reassign the port to a different router), and service_bindings.
 * @param ctx context.Context Authentication Context
@@ -6942,7 +6937,6 @@ func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterDownLinkPort(ct
 	return successPayload, localVarHttpResponse, err
 }
 
-
 /* LogicalRoutingAndServicesApiService Update a Logical Router Loopback Port
 Modifies the specified logical router port. Required parameters include the resource_type and logical_router_id. Modifiable parameters include the resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort, LogicalRouterLinkPort, LogicalRouterLoopbackPort), logical_router_id (to reassign the port to a different router), and service_bindings.
 * @param ctx context.Context Authentication Context
@@ -7007,7 +7001,6 @@ func (a *LogicalRoutingAndServicesApiService) UpdateLogicalRouterLoopbackPort(ct
 
 	return successPayload, localVarHttpResponse, err
 }
-
 
 /* LogicalRoutingAndServicesApiService Update a specific NAT rule from a given logical router
 Update a specific NAT rule from a given logical router.
