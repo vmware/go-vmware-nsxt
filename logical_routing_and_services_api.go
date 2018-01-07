@@ -683,7 +683,7 @@ func (a *LogicalRoutingAndServicesApiService) CreateLogicalRouterLinkPortOnTier0
 	)
 
 	// set resource type for this type-specific API
-	logicalRouterPort.ResourceType = "LogicalRouterLinkPortOnTIER1"
+	logicalRouterPort.ResourceType = "LogicalRouterLinkPortOnTIER0"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/logical-router-ports"
