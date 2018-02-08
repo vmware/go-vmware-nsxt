@@ -17,6 +17,8 @@ import (
 	"golang.org/x/oauth2"
 	"io"
 	"io/ioutil"
+	"math"
+	"math/rand"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -302,8 +304,55 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 	return fmt.Sprintf("%v", obj)
 }
 
+// TODO(asarfay) make all those configurable
+var retry_on_status = map[int]bool{
+    429: true, // Too many requests
+}
+var max_retries = int(10)
+var min_delay = int(500)
+var max_delay = float64(5000)
+
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
+
+	// keep the initial request body string
+	var requestBodyString string
+	if request.Body != nil {
+		buf := new(bytes.Buffer)
+		buf.ReadFrom(request.Body)
+		requestBodyString = buf.String() 
+		request.Body = ioutil.NopCloser(strings.NewReader(requestBodyString))
+	}
+
+	// first run
+	localVarHttpResponse, err := c.callAPIInternal(request)
+
+	// loop until not getting the retry-able error, or until max retries
+    for n_try := 1; n_try < max_retries; n_try++ {
+    	if localVarHttpResponse == nil {
+        	// Non retry-able response
+        	return localVarHttpResponse, err
+        } else if _, ok := retry_on_status[localVarHttpResponse.StatusCode]; ok {
+	    	// sleep a random increasing time
+    		float_delay := float64(rand.Intn(min_delay * n_try))
+	  	  	fixed_delay := time.Duration(math.Min(max_delay, float_delay))
+    		time.Sleep(fixed_delay * time.Millisecond)
+	        // reset Request.Body
+			if request.Body != nil {
+	        	request.Body = ioutil.NopCloser(strings.NewReader(requestBodyString))
+	        }
+    	    // perform the request again
+			localVarHttpResponse, err = c.callAPIInternal(request)
+        } else {
+        	// Non retry-able response
+        	return localVarHttpResponse, err
+        }
+    }
+    // max retries exceeded
+	return localVarHttpResponse, err
+}
+
+func (c *APIClient) callAPIInternal(request *http.Request) (*http.Response, error) {
 	localVarHttpResponse, err := c.cfg.HTTPClient.Do(request)
 
 	if err == nil && localVarHttpResponse.StatusCode == 400 {
