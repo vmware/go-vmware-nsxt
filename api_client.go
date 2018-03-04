@@ -304,13 +304,14 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 	return fmt.Sprintf("%v", obj)
 }
 
-// TODO(asarfay) make all those configurable
-var retry_on_status = map[int]bool{
-    429: true, // Too many requests
+func (c *APIClient) shouldRetryOnStatus(code int) bool {
+	for _, s := range c.cfg.RetriesConfiguration.RetryOnStatuses {
+		if code == s {
+			return true
+		}
+	}
+	return false
 }
-var max_retries = int(10)
-var min_delay = int(500)
-var max_delay = float64(5000)
 
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
@@ -326,16 +327,17 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 
 	// first run
 	localVarHttpResponse, err := c.callAPIInternal(request)
-
+	config := c.cfg.RetriesConfiguration
+	maxRetries := int(math.Max(2, float64(config.MaxRetries)))
 	// loop until not getting the retry-able error, or until max retries
-    for n_try := 1; n_try < max_retries; n_try++ {
+    for n_try := 1; n_try < maxRetries; n_try++ {
     	if localVarHttpResponse == nil {
         	// Non retry-able response
         	return localVarHttpResponse, err
-        } else if _, ok := retry_on_status[localVarHttpResponse.StatusCode]; ok {
+        } else if c.shouldRetryOnStatus(localVarHttpResponse.StatusCode) {
 	    	// sleep a random increasing time
-    		float_delay := float64(rand.Intn(min_delay * n_try))
-	  	  	fixed_delay := time.Duration(math.Min(max_delay, float_delay))
+    		float_delay := float64(rand.Intn(config.RetryMinDelay * n_try))
+	  	  	fixed_delay := time.Duration(math.Min(float64(config.RetryMaxDelay), float_delay))
     		time.Sleep(fixed_delay * time.Millisecond)
 	        // reset Request.Body
 			if request.Body != nil {
