@@ -9512,6 +9512,9 @@ func (a *ServicesApiService) UpdateLoadBalancerIcmpMonitor(ctx context.Context, 
 		successPayload     loadbalancer.LbIcmpMonitor
 	)
 
+        // set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbIcmpMonitor"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors/{monitor-id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"monitor-id"+"}", fmt.Sprintf("%v", monitorId), -1)
@@ -9577,6 +9580,9 @@ func (a *ServicesApiService) UpdateLoadBalancerTcpMonitor(ctx context.Context, m
 		localVarFileBytes  []byte
 		successPayload     loadbalancer.LbTcpMonitor
 	)
+
+        // set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbTcpMonitor"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors/{monitor-id}"
@@ -9644,6 +9650,9 @@ func (a *ServicesApiService) UpdateLoadBalancerUdpMonitor(ctx context.Context, m
 		successPayload     loadbalancer.LbUdpMonitor
 	)
 
+        // set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbUdpMonitor"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors/{monitor-id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"monitor-id"+"}", fmt.Sprintf("%v", monitorId), -1)
@@ -9710,6 +9719,9 @@ func (a *ServicesApiService) UpdateLoadBalancerHttpMonitor(ctx context.Context, 
 		successPayload     loadbalancer.LbHttpMonitor
 	)
 
+        // set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbHttpMonitor"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors/{monitor-id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"monitor-id"+"}", fmt.Sprintf("%v", monitorId), -1)
@@ -9775,6 +9787,9 @@ func (a *ServicesApiService) UpdateLoadBalancerHttpsMonitor(ctx context.Context,
 		localVarFileBytes  []byte
 		successPayload     loadbalancer.LbHttpsMonitor
 	)
+
+        // set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbHttpsMonitor"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors/{monitor-id}"

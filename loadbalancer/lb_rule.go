@@ -26,7 +26,7 @@ type LbRule struct {
 	Self *common.SelfResourceLink `json:"_self,omitempty"`
 
 	// The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.
-	Revision int32 `json:"_revision,omitempty"`
+	Revision int32 `json:"_revision"`
 
 	// Timestamp of resource creation
 	CreateTime int64 `json:"_create_time,omitempty"`
