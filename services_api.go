@@ -1362,6 +1362,9 @@ func (a *ServicesApiService) CreateLoadBalancerHttpMonitor(ctx context.Context, 
 		successPayload     loadbalancer.LbHttpMonitor
 	)
 
+	// set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbHttpMonitor"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors"
 
@@ -1425,6 +1428,9 @@ func (a *ServicesApiService) CreateLoadBalancerHttpsMonitor(ctx context.Context,
 		localVarFileBytes  []byte
 		successPayload     loadbalancer.LbHttpsMonitor
 	)
+
+	// set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbHttpsMonitor"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors"
@@ -1490,6 +1496,9 @@ func (a *ServicesApiService) CreateLoadBalancerUdpMonitor(ctx context.Context, l
 		successPayload     loadbalancer.LbUdpMonitor
 	)
 
+	// set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbUdpMonitor"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors"
 
@@ -1554,6 +1563,9 @@ func (a *ServicesApiService) CreateLoadBalancerTcpMonitor(ctx context.Context, l
 		successPayload     loadbalancer.LbTcpMonitor
 	)
 
+	// set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbTcpMonitor"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors"
 
@@ -1617,6 +1629,9 @@ func (a *ServicesApiService) CreateLoadBalancerIcmpMonitor(ctx context.Context, 
 		localVarFileBytes  []byte
 		successPayload     loadbalancer.LbIcmpMonitor
 	)
+
+	// set resource type for this type-specific API
+	lbMonitor.ResourceType = "LbIcmpMonitor"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/loadbalancer/monitors"
