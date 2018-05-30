@@ -1,0 +1,27 @@
+python tools/goclone.py services_api.go CreateLoadBalancerApplicationProfile CreateLoadBalancerFastTcpProfile LbAppProfile LbFastTcpProfile > /tmp/t
+cp /tmp/t services_api.go
+
+python tools/goclone.py services_api.go CreateLoadBalancerApplicationProfile CreateLoadBalancerFastUdpProfile LbAppProfile LbFastUdpProfile > /tmp/t
+cp /tmp/t services_api.go
+
+python tools/goclone.py services_api.go CreateLoadBalancerApplicationProfile CreateLoadBalancerHttpProfile LbAppProfile LbHttpProfile > /tmp/t
+cp /tmp/t services_api.go
+
+python tools/goclone.py services_api.go UpdateLoadBalancerApplicationProfile UpdateLoadBalancerFastTcpProfile LbAppProfile LbFastTcpProfile > /tmp/t
+cp /tmp/t services_api.go
+
+python tools/goclone.py services_api.go UpdateLoadBalancerApplicationProfile UpdateLoadBalancerFastUdpProfile LbAppProfile LbFastUdpProfile > /tmp/t
+cp /tmp/t services_api.go
+
+python tools/goclone.py services_api.go UpdateLoadBalancerApplicationProfile UpdateLoadBalancerHttpProfile LbAppProfile LbHttpProfile > /tmp/t
+cp /tmp/t services_api.go
+
+
+python tools/goclone.py services_api.go ReadLoadBalancerApplicationProfile ReadLoadBalancerFastTcpProfile LbAppProfile LbFastTcpProfile > /tmp/t
+cp /tmp/t services_api.go
+
+python tools/goclone.py services_api.go ReadLoadBalancerApplicationProfile ReadLoadBalancerFastUdpProfile LbAppProfile LbFastUdpProfile > /tmp/t
+cp /tmp/t services_api.go
+
+python tools/goclone.py services_api.go ReadLoadBalancerApplicationProfile ReadLoadBalancerHttpProfile LbAppProfile LbHttpProfile > /tmp/t
+cp /tmp/t services_api.go
