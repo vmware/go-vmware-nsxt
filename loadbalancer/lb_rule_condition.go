@@ -22,13 +22,13 @@ type LbRuleCondition struct {
 	SourceAddress string `json:"source_address,omitempty"`
 
 	// TCP source port of HTTP message
-	SourcePort string `json:"source_port, omitempty"`
+	SourcePort string `json:"source_port,omitempty"`
 
 	// HTTP version
 	Version string `json:"version,omitempty"`
 
 	// Type of HTTP request method
-	Method string `json:"method, omitempty"`
+	Method string `json:"method,omitempty"`
 
 	// If true, case is significant
 	CaseSensitive bool `json:"case_sensitive,omitempty"`
