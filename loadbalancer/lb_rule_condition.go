@@ -31,7 +31,7 @@ type LbRuleCondition struct {
 	Method string `json:"method,omitempty"`
 
 	// If true, case is significant
-	CaseSensitive bool `json:"case_sensitive,omitempty"`
+	CaseSensitive *bool `json:"case_sensitive,omitempty"`
 
 	// Match type
 	MatchType string `json:"match_type,omitempty"`
