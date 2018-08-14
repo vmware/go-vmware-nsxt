@@ -225,6 +225,8 @@ func (a *LogicalSwitchingApiService) CreateSwitchSecuritySwitchingProfile(ctx co
 		successPayload     manager.SwitchSecuritySwitchingProfile
 	)
 
+        baseSwitchingProfile.ResourceType = "SwitchSecuritySwitchingProfile"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles"
 
@@ -287,6 +289,8 @@ func (a *LogicalSwitchingApiService) CreateMacManagementSwitchingProfile(ctx con
 		localVarFileBytes  []byte
 		successPayload     manager.MacManagementSwitchingProfile
 	)
+
+        baseSwitchingProfile.ResourceType = "MacManagementSwitchingProfile"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles"
@@ -351,6 +355,8 @@ func (a *LogicalSwitchingApiService) CreateIpDiscoverySwitchingProfile(ctx conte
 		successPayload     manager.IpDiscoverySwitchingProfile
 	)
 
+        baseSwitchingProfile.ResourceType = "IpDiscoverySwitchingProfile"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles"
 
@@ -413,6 +419,8 @@ func (a *LogicalSwitchingApiService) CreatePortMirroringSwitchingProfile(ctx con
 		localVarFileBytes  []byte
 		successPayload     manager.PortMirroringSwitchingProfile
 	)
+
+        baseSwitchingProfile.ResourceType = "PortMirroringSwitchingProfile"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles"
@@ -477,6 +485,8 @@ func (a *LogicalSwitchingApiService) CreateSpoofGuardSwitchingProfile(ctx contex
 		successPayload     manager.SpoofGuardSwitchingProfile
 	)
 
+        baseSwitchingProfile.ResourceType = "SpoofGuardSwitchingProfile"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles"
 
@@ -539,6 +549,8 @@ func (a *LogicalSwitchingApiService) CreateQosSwitchingProfile(ctx context.Conte
 		localVarFileBytes  []byte
 		successPayload     manager.QosSwitchingProfile
 	)
+
+        baseSwitchingProfile.ResourceType = "QosSwitchingProfile"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles"
