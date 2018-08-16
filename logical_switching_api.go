@@ -3407,6 +3407,8 @@ func (a *LogicalSwitchingApiService) UpdateSwitchSecuritySwitchingProfile(ctx co
 		successPayload     manager.SwitchSecuritySwitchingProfile
 	)
 
+        baseSwitchingProfile.ResourceType = "SwitchSecuritySwitchingProfile"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles/{switching-profile-id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"switching-profile-id"+"}", fmt.Sprintf("%v", switchingProfileId), -1)
@@ -3471,6 +3473,8 @@ func (a *LogicalSwitchingApiService) UpdateMacManagementSwitchingProfile(ctx con
 		localVarFileBytes  []byte
 		successPayload     manager.MacManagementSwitchingProfile
 	)
+
+        baseSwitchingProfile.ResourceType = "MacManagementSwitchingProfile"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles/{switching-profile-id}"
@@ -3537,6 +3541,8 @@ func (a *LogicalSwitchingApiService) UpdateIpDiscoverySwitchingProfile(ctx conte
 		successPayload     manager.IpDiscoverySwitchingProfile
 	)
 
+        baseSwitchingProfile.ResourceType = "IpDiscoverySwitchingProfile"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles/{switching-profile-id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"switching-profile-id"+"}", fmt.Sprintf("%v", switchingProfileId), -1)
@@ -3601,6 +3607,8 @@ func (a *LogicalSwitchingApiService) UpdatePortMirroringSwitchingProfile(ctx con
 		localVarFileBytes  []byte
 		successPayload     manager.PortMirroringSwitchingProfile
 	)
+
+        baseSwitchingProfile.ResourceType = "PortMirroringSwitchingProfile"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles/{switching-profile-id}"
@@ -3667,6 +3675,8 @@ func (a *LogicalSwitchingApiService) UpdateSpoofGuardSwitchingProfile(ctx contex
 		successPayload     manager.SpoofGuardSwitchingProfile
 	)
 
+        baseSwitchingProfile.ResourceType = "SpoofGuardSwitchingProfile"
+
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles/{switching-profile-id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"switching-profile-id"+"}", fmt.Sprintf("%v", switchingProfileId), -1)
@@ -3731,6 +3741,8 @@ func (a *LogicalSwitchingApiService) UpdateQosSwitchingProfile(ctx context.Conte
 		localVarFileBytes  []byte
 		successPayload     manager.QosSwitchingProfile
 	)
+
+        baseSwitchingProfile.ResourceType = "QosSwitchingProfile"
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/switching-profiles/{switching-profile-id}"
