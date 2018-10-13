@@ -17,7 +17,7 @@ type NodeStatus struct {
 	// Is true if inventory sync is paused else false
 	InventorySyncPaused bool `json:"inventory_sync_paused,omitempty"`
 
-	// Inventory sync auto re-enable target time, in epoch milis
+	// Inventory sync auto re-enable target time, in epoch milliseconds
 	InventorySyncReenableTime int64 `json:"inventory_sync_reenable_time,omitempty"`
 
 	// Timestamp of the last heartbeat status change, in epoch milliseconds.

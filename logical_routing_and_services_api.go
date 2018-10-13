@@ -1793,7 +1793,7 @@ func (a *LogicalRoutingAndServicesApiService) DeleteServiceProfile(ctx context.C
 	return localVarHttpResponse, err
 }
 
-/* LogicalRoutingAndServicesApiService Delete a specified static route BFD peer cofigured on a specified logical router
+/* LogicalRoutingAndServicesApiService Delete a specified static route BFD peer configured on a specified logical router
 Deletes the specified BFD peer present on specified logical router.
 * @param ctx context.Context Authentication Context
 @param logicalRouterId
@@ -2034,7 +2034,7 @@ func (a *LogicalRoutingAndServicesApiService) GetBgpNeighborsStatus(ctx context.
 }
 
 /* LogicalRoutingAndServicesApiService Get FIB table on a specified node for a logical router
-Returns the FIB for the logical router on a node of the given transport-node-id. Query parameter \&quot;transport_node_id&#x3D;&lt;transport-node-id&gt;\&quot; is required. To filter the result by network address, paramter \&quot;network_prefix&#x3D;&lt;a.b.c.d/mask&gt;\&quot; needs to be specified. The query parameter \&quot;source&#x3D;cached\&quot; is not supported.
+Returns the FIB for the logical router on a node of the given transport-node-id. Query parameter \&quot;transport_node_id&#x3D;&lt;transport-node-id&gt;\&quot; is required. To filter the result by network address, parameter \&quot;network_prefix&#x3D;&lt;a.b.c.d/mask&gt;\&quot; needs to be specified. The query parameter \&quot;source&#x3D;cached\&quot; is not supported.
 * @param ctx context.Context Authentication Context
 @param logicalRouterId
 @param transportNodeId TransportNode Id
@@ -2149,7 +2149,7 @@ func (a *LogicalRoutingAndServicesApiService) GetLogicalRouterForwardingTable(ct
 }
 
 /* LogicalRoutingAndServicesApiService Get FIB table on a specified node for a logical router
-Returns the FIB table in CSV format for the logical router on a node of the given transport-node-id. Query parameter \&quot;transport_node_id&#x3D;&lt;transport-node-id&gt;\&quot; is required. To filter the result by network address, paramter \&quot;network_prefix&#x3D;&lt;a.b.c.d/mask&gt;\&quot; needs to be specified. The query parameter \&quot;source&#x3D;cached\&quot; is not supported.
+Returns the FIB table in CSV format for the logical router on a node of the given transport-node-id. Query parameter \&quot;transport_node_id&#x3D;&lt;transport-node-id&gt;\&quot; is required. To filter the result by network address, parameter \&quot;network_prefix&#x3D;&lt;a.b.c.d/mask&gt;\&quot; needs to be specified. The query parameter \&quot;source&#x3D;cached\&quot; is not supported.
 * @param ctx context.Context Authentication Context
 @param logicalRouterId
 @param transportNodeId TransportNode Id
@@ -2872,7 +2872,7 @@ func (a *LogicalRoutingAndServicesApiService) GetLogicalRouterRoutingTable(ctx c
 }
 
 /* LogicalRoutingAndServicesApiService Get RIB table on a specified node for a logical router
-Returns the route table in CSV format for the logical router on a node of the given transport-node-id. Query parameter \&quot;transport_node_id&#x3D;&lt;transport-node-id&gt;\&quot; is required. To filter the result by network address, paramter \&quot;network_prefix&#x3D;&lt;a.b.c.d/mask&gt;\&quot; needs to be specified. To filter the result by route source, parameter \&quot;route_source&#x3D;&lt;source_type&gt;\&quot; needs to be specified where source_type can be BGP, STATIC, CONNECTED, NSX_STATIC, TIER1_NAT or TIER0_NAT. It is also possible to filter the RIB table using both network address and route source filter together. The query parameter \&quot;source&#x3D;cached\&quot; is not supported.
+Returns the route table in CSV format for the logical router on a node of the given transport-node-id. Query parameter \&quot;transport_node_id&#x3D;&lt;transport-node-id&gt;\&quot; is required. To filter the result by network address, parameter \&quot;network_prefix&#x3D;&lt;a.b.c.d/mask&gt;\&quot; needs to be specified. To filter the result by route source, parameter \&quot;route_source&#x3D;&lt;source_type&gt;\&quot; needs to be specified where source_type can be BGP, STATIC, CONNECTED, NSX_STATIC, TIER1_NAT or TIER0_NAT. It is also possible to filter the RIB table using both network address and route source filter together. The query parameter \&quot;source&#x3D;cached\&quot; is not supported.
 * @param ctx context.Context Authentication Context
 @param logicalRouterId
 @param transportNodeId TransportNode Id
@@ -5768,7 +5768,7 @@ func (a *LogicalRoutingAndServicesApiService) ReadRouteMap(ctx context.Context, 
 }
 
 /* LogicalRoutingAndServicesApiService Read the Routing BFD Configuration
-Returns the BFD configuration for all routing BFD peers. This will be inherited |   by all BFD peers for manager.LogicalRouter unless overriden while configuring the Peer.
+Returns the BFD configuration for all routing BFD peers. This will be inherited |   by all BFD peers for manager.LogicalRouter unless overridden while configuring the Peer.
 * @param ctx context.Context Authentication Context
 @param logicalRouterId
 @return manager.BfdConfig*/

@@ -259,7 +259,7 @@ func selectHeaderAccept(accepts []string) string {
 	return strings.Join(accepts, ",")
 }
 
-// contains is a case insenstive match, finding needle in a haystack
+// contains is a case-insensitive match, finding needle in a haystack
 func contains(haystack []string, needle string) bool {
 	for _, a := range haystack {
 		if strings.ToLower(a) == strings.ToLower(needle) {
@@ -401,7 +401,7 @@ func (c *APIClient) prepareRequest(
 		}
 	}
 
-	// add form paramters and file if available.
+	// add form parameters and file if available.
 	if len(formParams) > 0 || (len(fileBytes) > 0 && fileName != "") {
 		if body != nil {
 			return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
@@ -441,7 +441,7 @@ func (c *APIClient) prepareRequest(
 		w.Close()
 	}
 
-	// Setup path and query paramters
+	// Setup path and query parameters
 	url, err := url.Parse(path)
 	if err != nil {
 		return nil, err

@@ -11,7 +11,7 @@ import (
 
 type DneKeyManager struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -60,6 +60,6 @@ type DneKeyManager struct {
 	// A port number of key manager instance.
 	Port int64 `json:"port"`
 
-	// Health status check for the key manager server. The value is updated and displayed everytime an API call(GET/POST/PUT) is made on the key manager entity.
+	// Health status check for the key manager server. The value is updated and displayed every time an API call(GET/POST/PUT) is made on the key manager entity.
 	Status string `json:"status,omitempty"`
 }

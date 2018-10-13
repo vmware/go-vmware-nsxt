@@ -11,7 +11,7 @@ import (
 
 type BgpNeighbor struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -54,7 +54,7 @@ type BgpNeighbor struct {
 	// User can enable the neighbor for the specific address families and also define filters per address family. When the neighbor is created, it is default enabled for IPV4_UNICAST address family for backward compatibility reasons. User can change that if required, by defining the address family configuration.
 	AddressFamilies []BgpNeighborAddressFamily `json:"address_families,omitempty"`
 
-	// By specifying these paramaters BFD config for this given peer can be overriden | (the globally configured values will not apply for this peer)
+	// By specifying these parameters BFD config for this given peer can be overridden | (the globally configured values will not apply for this peer)
 	BfdConfig *BfdConfigParameters `json:"bfd_config,omitempty"`
 
 	// Flag to enable BFD for this BGP Neighbor. Enable this if the neighbor supports BFD as this will lead to faster convergence.
@@ -84,7 +84,7 @@ type BgpNeighbor struct {
 	// Logical router id
 	LogicalRouterId string `json:"logical_router_id,omitempty"`
 
-	// This value is set on TTL(time to live) of BGP header. When router receives the BGP packet, it decrements the TTL. The default value of TTL is one when BPG request is initiated.So in the case of a BGP peer multiple hops away and and value of TTL is one, then  next router in the path will decrement the TTL to 0, realize it cant forward the packet and will drop it. If the hop count value to reach neighbor is equal to or less than the maximum_hop_limit value then intermediate router decrements the TTL count by one and forwards the request to BGP neighour. If the hop count value is greater than the maximum_hop_limit value then intermediate router discards the request when TTL becomes 0.
+	// This value is set on TTL(time to live) of BGP header. When router receives the BGP packet, it decrements the TTL. The default value of TTL is one when BPG request is initiated.So in the case of a BGP peer multiple hops away and and value of TTL is one, then  next router in the path will decrement the TTL to 0, realize it cant forward the packet and will drop it. If the hop count value to reach neighbor is equal to or less than the maximum_hop_limit value then intermediate router decrements the TTL count by one and forwards the request to BGP neighbour. If the hop count value is greater than the maximum_hop_limit value then intermediate router discards the request when TTL becomes 0.
 	MaximumHopLimit int32 `json:"maximum_hop_limit,omitempty"`
 
 	// Neighbor IP Address

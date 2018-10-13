@@ -11,7 +11,7 @@ import (
 
 type MetadataProxy struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -60,7 +60,7 @@ type MetadataProxy struct {
 	// If none is provided, the NSX will auto-select two edge-nodes from the given edge cluster. If user provides only one edge node, there will be no HA support.
 	EdgeClusterMemberIndexes []int64 `json:"edge_cluster_member_indexes,omitempty"`
 
-	// The CAs referenced here must be uploaded to the truststore using the API POST /api/v1/trust-management/certificates?action=import. User needs to ensure a correct CA for this metedata server is used. The REST API can not detect a wrong CA which was used to verify a different server. If the Metadata Proxy reports an ERROR or NO_BACKUP status, user can check the metadata proxy log at transport node for a possible CA issue.
+	// The CAs referenced here must be uploaded to the truststore using the API POST /api/v1/trust-management/certificates?action=import. User needs to ensure a correct CA for this metadata server is used. The REST API can not detect a wrong CA which was used to verify a different server. If the Metadata Proxy reports an ERROR or NO_BACKUP status, user can check the metadata proxy log at transport node for a possible CA issue.
 	MetadataServerCaIds []string `json:"metadata_server_ca_ids,omitempty"`
 
 	// The URL in format scheme://host:port/path. Please note, the scheme supports only http and https as of now, port supports range 3000 - 9000, inclusive.

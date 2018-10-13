@@ -11,7 +11,7 @@ import (
 
 type DneSectionRuleList struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -60,6 +60,6 @@ type DneSectionRuleList struct {
 	// Type of the rules which a section can contain. Only homogeneous sections are supported.
 	SectionType string `json:"section_type,omitempty"`
 
-	// List of DNE rules in the section. Only homogenous rules are supported.
+	// List of DNE rules in the section. Only Homogeneous rules are supported.
 	Rules []DneRule `json:"rules"`
 }

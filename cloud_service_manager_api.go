@@ -84,8 +84,8 @@ func (a *CloudServiceManagerApiService) AwsAccountInfo(ctx context.Context, acco
 	return successPayload, localVarHttpResponse, err
 }
 
-/* CloudServiceManagerApiService Returns information about the particual Aws Region
-Returns information about the particual Aws Region
+/* CloudServiceManagerApiService Returns information about the particular Aws Region
+Returns information about the particular Aws Region
 * @param ctx context.Context Authentication Context
 @param regionId ID of the region
 @return AwsRegion*/
@@ -270,8 +270,8 @@ func (a *CloudServiceManagerApiService) CloudVirtualMachineInfo(ctx context.Cont
 	return successPayload, localVarHttpResponse, err
 }
 
-/* CloudServiceManagerApiService Add a AWS account to cloud serivce manager
-Add a AWS account to cloud serivce manager
+/* CloudServiceManagerApiService Add a AWS account to cloud service manager
+Add a AWS account to cloud service manager
 * @param ctx context.Context Authentication Context
 @param awsAccount
 @return AwsAccount*/
@@ -630,8 +630,8 @@ func (a *CloudServiceManagerApiService) DeployAwsGatewayDeploy(ctx context.Conte
 	return successPayload, localVarHttpResponse, err
 }
 
-/* CloudServiceManagerApiService Return status of the account like credentails validity, inventory synchronization status and inventory synchronization state
-Return status of the account like credentails validity, inventory synchronization status and inventory synchronization state
+/* CloudServiceManagerApiService Return status of the account like credentials validity, inventory synchronization status and inventory synchronization state
+Return status of the account like credentials validity, inventory synchronization status and inventory synchronization state
 * @param ctx context.Context Authentication Context
 @param accountId ID of AWS account
 @return AwsAccountStatus*/
@@ -1762,7 +1762,7 @@ Returns the list of all virtual machines created or imported under a particular 
     @param "logicalSwitchId" (string) Identifier for logical switch based on which Aws Virtual Machines are to be filtered
     @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
     @param "publicIp" (string) Public IP address of the virtual machine
-    @param "regionId" (string) Identifier for region based on whicha Virtual Machines are to be filtered
+    @param "regionId" (string) Identifier for region based on which Virtual Machines are to be filtered
     @param "sortAscending" (bool)
     @param "sortBy" (string) Field by which records are sorted
     @param "vpcId" (string) Identifier for vpc based on which Aws Virtual Machines are to be filtered
@@ -2018,8 +2018,8 @@ func (a *CloudServiceManagerApiService) NsxManagerAccountInfo(ctx context.Contex
 	return successPayload, localVarHttpResponse, err
 }
 
-/* CloudServiceManagerApiService Registers a AWS Gateway AMI for the region specified in the body. One can register only one gateway AMI ID per region. If a gateway AMI is already registered with a region, user is expected to use update API to overwrite the registerd AMI for a region.
-Registers a AWS Gateway AMI for the region specified in the body. One can register only one gateway AMI ID per region. If a gateway AMI is already registered with a region, user is expected to use update API to overwrite the registerd AMI for a region.
+/* CloudServiceManagerApiService Registers a AWS Gateway AMI for the region specified in the body. One can register only one gateway AMI ID per region. If a gateway AMI is already registered with a region, user is expected to use update API to overwrite the registered AMI for a region.
+Registers a AWS Gateway AMI for the region specified in the body. One can register only one gateway AMI ID per region. If a gateway AMI is already registered with a region, user is expected to use update API to overwrite the registered AMI for a region.
 * @param ctx context.Context Authentication Context
 @param awsGatewayAmiInfo
 @return AwsGatewayAmiInfo*/

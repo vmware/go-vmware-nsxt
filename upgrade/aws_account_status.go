@@ -11,14 +11,14 @@ import (
 
 type AwsAccountStatus struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
 
 	Self *common.SelfResourceLink `json:"_self,omitempty"`
 
-	// Status of the account credentials synched at the auto interval
+	// Status of the account credentials synced at the auto interval
 	CredentialsStatus string `json:"credentials_status,omitempty"`
 
 	// State of inventory sync

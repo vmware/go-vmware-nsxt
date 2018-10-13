@@ -5189,7 +5189,7 @@ func (a *ServicesApiService) GetFirewallStatus(ctx context.Context, contextType 
 }
 
 /* ServicesApiService Get Metadata Proxy statistics with given proxy id
-Returns the statistics of the given metatada proxy. If no logical switch is provided, all staticstics of all the logical switches the proxy was attached will be returned.
+Returns the statistics of the given metadata proxy. If no logical switch is provided, all statistics of all the logical switches the proxy was attached will be returned.
 * @param ctx context.Context Authentication Context
 @param proxyId
 @param optional (nil or map[string]interface{}) with one or more of:
@@ -9882,7 +9882,7 @@ func (a *ServicesApiService) UpdateDneSection(ctx context.Context, sectionId str
 }
 
 /* ServicesApiService Update a network encryption section and its rules
-This API returns an error if the section does not have rules. When invoked on a large number of rules, this API is supported only at low rates of invocation (not more than 2 times per minute). The typical latency of this API with about 1024 rules is about 15 seconds in a cluster setup. This API should not be invoked with large payloads at automation speeds.  Instead, to update rule content, use: PUT /api/v1/network-enryption/sections/&amp;lt;section-id&amp;gt;/rules/&amp;lt;rule-id&amp;gt;
+This API returns an error if the section does not have rules. When invoked on a large number of rules, this API is supported only at low rates of invocation (not more than 2 times per minute). The typical latency of this API with about 1024 rules is about 15 seconds in a cluster setup. This API should not be invoked with large payloads at automation speeds.  Instead, to update rule content, use: PUT /api/v1/network-encryption/sections/&amp;lt;section-id&amp;gt;/rules/&amp;lt;rule-id&amp;gt;
 * @param ctx context.Context Authentication Context
 @param sectionId
 @param dneSectionRuleList
