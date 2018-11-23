@@ -177,7 +177,7 @@ func InitHttpClient(cfg *Configuration) error {
 
 	tlsConfig.BuildNameToCertificate()
 
-	transport := &http.Transport{TLSClientConfig: tlsConfig}
+	transport := &http.Transport{Proxy: http.ProxyFromEnvironment, TLSClientConfig: tlsConfig}
 	cfg.HTTPClient = &http.Client{Transport: transport}
 	return nil
 }
