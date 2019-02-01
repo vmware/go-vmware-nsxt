@@ -10,6 +10,7 @@ import (
 	"context"
 	"crypto/tls"
 	"crypto/x509"
+	"encoding/base64"
 	"encoding/json"
 	"encoding/xml"
 	"errors"
@@ -76,7 +77,7 @@ type service struct {
 }
 
 func GetContext(cfg *Configuration) context.Context {
-	if len(cfg.ClientAuthCertFile) == 0 {
+	if len(cfg.ClientAuthCertFile) == 0 && cfg.RemoteAuth == false {
 		auth := BasicAuth{UserName: cfg.UserName,
 			Password: cfg.Password}
 		return context.WithValue(context.Background(), ContextBasicAuth, auth)
@@ -142,6 +143,13 @@ func GetDefaultHeaders(client *APIClient) error {
 	}
 
 	response.Body.Close()
+
+	// For remote Auth (vIDM use case), construct the REMOTE auth header
+	if client.cfg.RemoteAuth {
+		auth := client.cfg.UserName + ":" + client.cfg.Password
+		encoded := base64.StdEncoding.EncodeToString([]byte(auth))
+		client.cfg.DefaultHeader["client.cfg.DefaultHeader"] = "Remote " + encoded
+	}
 	return nil
 }
 
