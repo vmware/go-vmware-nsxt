@@ -104,6 +104,15 @@ func GetDefaultHeaders(client *APIClient) error {
 		"Content-Type": "application/x-www-form-urlencoded",
 	}
 
+	// For remote Auth (vIDM use case), construct the REMOTE auth header
+	remoteAuthHeader := ""
+	if client.cfg.RemoteAuth {
+		auth := client.cfg.UserName + ":" + client.cfg.Password
+		encoded := base64.StdEncoding.EncodeToString([]byte(auth))
+		remoteAuthHeader = "Remote " + encoded
+		requestHeaders["Authorization"] = remoteAuthHeader
+	}
+
 	path := strings.TrimSuffix(client.cfg.BasePath, "v1") + "session/create"
 	// Call session create
 	r, err := client.prepareRequest(
@@ -146,9 +155,7 @@ func GetDefaultHeaders(client *APIClient) error {
 
 	// For remote Auth (vIDM use case), construct the REMOTE auth header
 	if client.cfg.RemoteAuth {
-		auth := client.cfg.UserName + ":" + client.cfg.Password
-		encoded := base64.StdEncoding.EncodeToString([]byte(auth))
-		client.cfg.DefaultHeader["client.cfg.DefaultHeader"] = "Remote " + encoded
+		client.cfg.DefaultHeader["Authorization"] = remoteAuthHeader
 	}
 	return nil
 }
