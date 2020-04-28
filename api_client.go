@@ -70,6 +70,10 @@ type APIClient struct {
 	TransportEntitiesApi            *TransportEntitiesApiService
 	TroubleshootingAndMonitoringApi *TroubleshootingAndMonitoringApiService
 	UpgradeApi                      *UpgradeApiService
+	ContainerApplicationsApi *ManagementPlaneApiFabricContainerApplicationsApiService
+	ContainerClustersApi     *ManagementPlaneApiFabricContainerClustersApiService
+	ContainerInventoryApi    *ManagementPlaneApiFabricContainerInventoryApiService
+	ContainerProjectsApi     *ManagementPlaneApiFabricContainerProjectsApiService
 }
 
 type service struct {
@@ -249,6 +253,10 @@ func NewAPIClient(cfg *Configuration) (*APIClient, error) {
 	c.TransportEntitiesApi = (*TransportEntitiesApiService)(&c.common)
 	c.TroubleshootingAndMonitoringApi = (*TroubleshootingAndMonitoringApiService)(&c.common)
 	c.UpgradeApi = (*UpgradeApiService)(&c.common)
+	c.ContainerApplicationsApi = (*ManagementPlaneApiFabricContainerApplicationsApiService)(&c.common)
+	c.ContainerClustersApi = (*ManagementPlaneApiFabricContainerClustersApiService)(&c.common)
+	c.ContainerInventoryApi = (*ManagementPlaneApiFabricContainerInventoryApiService)(&c.common)
+	c.ContainerProjectsApi = (*ManagementPlaneApiFabricContainerProjectsApiService)(&c.common)
 
 	return c, nil
 }
@@ -665,4 +673,42 @@ func CacheExpires(r *http.Response) time.Time {
 
 func strlen(s string) int {
 	return utf8.RuneCountInString(s)
+}
+
+// Added for supporting NSX 3.0 Container Inventory API
+func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err error) {
+	if strings.Contains(contentType, "application/xml") {
+		if err = xml.Unmarshal(b, v); err != nil {
+			return err
+		}
+		return nil
+	} else if strings.Contains(contentType, "application/json") {
+		if err = json.Unmarshal(b, v); err != nil {
+			return err
+		}
+		return nil
+	}
+	return errors.New("undefined response type")
+}
+
+// GenericSwaggerError Provides access to the body, error and model on returned errors.
+type GenericSwaggerError struct {
+	body  []byte
+	error string
+	model interface{}
+}
+
+// Error returns non-empty string if there was an error.
+func (e GenericSwaggerError) Error() string {
+	return e.error
+}
+
+// Body returns the raw bytes of the response
+func (e GenericSwaggerError) Body() []byte {
+	return e.body
+}
+
+// Model returns the unpacked model of the error
+func (e GenericSwaggerError) Model() interface{} {
+	return e.model
 }
