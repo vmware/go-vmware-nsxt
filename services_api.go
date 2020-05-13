@@ -8329,6 +8329,79 @@ func (a *ServicesApiService) ReadLoadBalancerService(ctx context.Context, servic
 	return successPayload, localVarHttpResponse, err
 }
 
+/* ServicesApiService Retrieve a status of load balancer service.
+Retrieve a status of load balancer service.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@param serviceId
+@param optional (nil or map[string]interface{}) with one or more of:
+	@param "source" (string) Data source type.
+@return loadbalancer.LbServiceStatus*/
+func (a *ServicesApiService) ReadLoadBalancerServiceStatus(ctx context.Context, serviceId string, localVarOptionals map[string]interface{}) (loadbalancer.LbServiceStatus, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     loadbalancer.LbServiceStatus
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/loadbalancer/services/{service-id}/status"
+	localVarPath = strings.Replace(localVarPath, "{"+"service-id"+"}", fmt.Sprintf("%v", serviceId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if err := typeCheckParameter(localVarOptionals["source"], "string", "source"); err != nil {
+		return successPayload, nil, err
+	}
+
+	if localVarTempParam, localVarOk := localVarOptionals["source"].(string); localVarOk {
+		localVarQueryParams.Add("source", parameterToString(localVarTempParam, ""))
+	}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+	return successPayload, localVarHttpResponse, err
+}
+
 /* ServicesApiService Read the debug information of the load balancer service
 API to download below information which will be used for debugging and troubleshooting. 1) Load balancer service 2) Load balancer associated virtual servers 3) Load balancer associated pools 4) Load balancer associated profiles such as persistence, SSL, application. 5) Load balancer associated monitors 6) Load balancer associated rules
 * @param ctx context.Context for authentication, logging, tracing, etc.
