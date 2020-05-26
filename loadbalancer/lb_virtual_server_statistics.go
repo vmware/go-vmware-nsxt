@@ -5,7 +5,7 @@ type LbVirtualServerStatistics struct {
 	LastUpdateTimestamp int64 `json:"last_update_timestamp,omitempty"`
 
 	// Load balancer virtual server identifier
-	VirtualServerId string `json:"pool_id"`
+	VirtualServerId string `json:"virtual_server_id"`
 
 	// Virtual server statistics counter
 	Statistics LbStatisticsCounter `json:"statistics"`
