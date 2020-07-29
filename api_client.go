@@ -70,10 +70,10 @@ type APIClient struct {
 	TransportEntitiesApi            *TransportEntitiesApiService
 	TroubleshootingAndMonitoringApi *TroubleshootingAndMonitoringApiService
 	UpgradeApi                      *UpgradeApiService
-	ContainerApplicationsApi *ManagementPlaneApiFabricContainerApplicationsApiService
-	ContainerClustersApi     *ManagementPlaneApiFabricContainerClustersApiService
-	ContainerInventoryApi    *ManagementPlaneApiFabricContainerInventoryApiService
-	ContainerProjectsApi     *ManagementPlaneApiFabricContainerProjectsApiService
+	ContainerApplicationsApi        *ManagementPlaneApiFabricContainerApplicationsApiService
+	ContainerClustersApi            *ManagementPlaneApiFabricContainerClustersApiService
+	ContainerInventoryApi           *ManagementPlaneApiFabricContainerInventoryApiService
+	ContainerProjectsApi            *ManagementPlaneApiFabricContainerProjectsApiService
 }
 
 type service struct {
@@ -370,7 +370,11 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 			}
 			log.Printf("[DEBUG] Retrying request %s %s for the %d time because of status %d", request.Method, request.URL, n_try, status)
 			// sleep a random increasing time
-			float_delay := float64(rand.Intn(config.RetryMinDelay * n_try))
+			minDelay := 1
+			if config.RetryMinDelay > 0 {
+				minDelay = config.RetryMinDelay
+			}
+			float_delay := float64(rand.Intn(minDelay * n_try))
 			fixed_delay := time.Duration(math.Min(float64(config.RetryMaxDelay), float_delay))
 			time.Sleep(fixed_delay * time.Millisecond)
 			// reset Request.Body

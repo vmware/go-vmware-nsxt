@@ -93,7 +93,7 @@ func (a *ManagementPlaneApiFabricContainerInventoryApiService) AddContainerInven
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarHttpResponse, newErr

@@ -89,7 +89,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) AddContainerCluste
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -101,7 +101,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) AddContainerCluste
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -176,7 +176,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) DeleteContainerClu
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarHttpResponse, newErr
@@ -248,7 +248,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerCluste
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -260,7 +260,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerCluste
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -332,7 +332,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerCluste
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -344,7 +344,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerCluste
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -416,7 +416,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerIngres
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -428,7 +428,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerIngres
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -500,7 +500,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerNetwor
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -512,7 +512,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerNetwor
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -617,7 +617,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerClust
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -629,7 +629,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerClust
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -739,7 +739,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerClust
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -751,7 +751,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerClust
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -861,7 +861,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerIngre
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -873,7 +873,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerIngre
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -983,7 +983,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerNetwo
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -995,7 +995,7 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerNetwo
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr

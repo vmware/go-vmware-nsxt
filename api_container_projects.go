@@ -88,7 +88,7 @@ func (a *ManagementPlaneApiFabricContainerProjectsApiService) GetContainerProjec
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -100,7 +100,7 @@ func (a *ManagementPlaneApiFabricContainerProjectsApiService) GetContainerProjec
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -205,7 +205,7 @@ func (a *ManagementPlaneApiFabricContainerProjectsApiService) ListContainerProje
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -217,7 +217,7 @@ func (a *ManagementPlaneApiFabricContainerProjectsApiService) ListContainerProje
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
