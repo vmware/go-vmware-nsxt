@@ -81,7 +81,7 @@ type service struct {
 }
 
 func GetContext(cfg *Configuration) context.Context {
-	if len(cfg.ClientAuthCertFile) == 0 && cfg.RemoteAuth == false {
+	if len(cfg.ClientAuthCertFile) == 0 && len(cfg.ClientAuthCertString) == 0 && cfg.RemoteAuth == false {
 		auth := BasicAuth{UserName: cfg.UserName,
 			Password: cfg.Password}
 		return context.WithValue(context.Background(), ContextBasicAuth, auth)
@@ -185,6 +185,19 @@ func InitHttpClient(cfg *Configuration) error {
 
 	}
 
+	if len(cfg.ClientAuthCertString) > 0 {
+		cert, err := tls.X509KeyPair([]byte(cfg.ClientAuthCertString),
+			[]byte(cfg.ClientAuthKeyString))
+		if err != nil {
+			return err
+		}
+
+		tlsConfig.GetClientCertificate = func(*tls.CertificateRequestInfo) (*tls.Certificate, error) {
+			return &cert, nil
+		}
+
+	}
+
 	if len(cfg.CAFile) > 0 {
 		caCert, err := ioutil.ReadFile(cfg.CAFile)
 		if err != nil {
@@ -197,7 +210,13 @@ func InitHttpClient(cfg *Configuration) error {
 		tlsConfig.RootCAs = caCertPool
 	}
 
-	tlsConfig.BuildNameToCertificate()
+	if len(cfg.CAString) > 0 {
+
+		caCertPool := x509.NewCertPool()
+		caCertPool.AppendCertsFromPEM([]byte(cfg.CAString))
+
+		tlsConfig.RootCAs = caCertPool
+	}
 
 	transport := &http.Transport{Proxy: http.ProxyFromEnvironment,
 		TLSClientConfig:     tlsConfig,
