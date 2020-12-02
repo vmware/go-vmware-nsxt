@@ -33,6 +33,8 @@ type ContainerCluster struct {
 	Tags []common.Tag `json:"tags,omitempty"`
 	// Type of the container cluster. In case of creating container cluster first time, it is expected to pass the valid cluster-type. In case of update, if there is no change in cluster-type, then this field can be omitted in the request. 
 	ClusterType string `json:"cluster_type,omitempty"`
+	// Specifies Container Network Interface type for container cluster.
+	CniType string `json:"cni_type,omitempty"`
 	// External identifier of the container cluster.
 	ExternalId string `json:"external_id,omitempty"`
 	// Details of underlying infrastructure that hosts the container cluster. In case of creating container cluster first time, it is expected to pass the valid infrastructure. In case of update, if there is no change in cluster-type, then this field can be omitted in the request. 
@@ -43,4 +45,6 @@ type ContainerCluster struct {
 	NetworkStatus string `json:"network_status,omitempty"`
 	// Array of additional specific properties of container cluster in key-value format. 
 	OriginProperties []common.KeyValuePair `json:"origin_properties,omitempty"`
+	// Specifies supervisor container project identifier for cluster.
+	SupervisorProjectId string `json:"supervisor_project_id,omitempty"`
 }
