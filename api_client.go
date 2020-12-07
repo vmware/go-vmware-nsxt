@@ -62,6 +62,7 @@ type APIClient struct {
 	NetworkTransportApi             *NetworkTransportApiService
 	NormalizationApi                *NormalizationApiService
 	NsxComponentAdministrationApi   *NsxComponentAdministrationApiService
+	NsxManagerHealthApi             *NsxManagerHealthApiService
 	OperationsApi                   *OperationsApiService
 	PolicyApi                       *PolicyApiService
 	PoolManagementApi               *PoolManagementApiService
@@ -264,6 +265,7 @@ func NewAPIClient(cfg *Configuration) (*APIClient, error) {
 	c.NetworkTransportApi = (*NetworkTransportApiService)(&c.common)
 	c.NormalizationApi = (*NormalizationApiService)(&c.common)
 	c.NsxComponentAdministrationApi = (*NsxComponentAdministrationApiService)(&c.common)
+	c.NsxManagerHealthApi = (*NsxManagerHealthApiService)(&c.common)
 	c.OperationsApi = (*OperationsApiService)(&c.common)
 	c.PolicyApi = (*PolicyApiService)(&c.common)
 	c.PoolManagementApi = (*PoolManagementApiService)(&c.common)
