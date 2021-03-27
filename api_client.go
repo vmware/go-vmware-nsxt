@@ -75,6 +75,7 @@ type APIClient struct {
 	ContainerClustersApi            *ManagementPlaneApiFabricContainerClustersApiService
 	ContainerInventoryApi           *ManagementPlaneApiFabricContainerInventoryApiService
 	ContainerProjectsApi            *ManagementPlaneApiFabricContainerProjectsApiService
+	AntreaNodesApi                  *AntreaNodesApiService
 }
 
 type service struct {
@@ -278,7 +279,7 @@ func NewAPIClient(cfg *Configuration) (*APIClient, error) {
 	c.ContainerClustersApi = (*ManagementPlaneApiFabricContainerClustersApiService)(&c.common)
 	c.ContainerInventoryApi = (*ManagementPlaneApiFabricContainerInventoryApiService)(&c.common)
 	c.ContainerProjectsApi = (*ManagementPlaneApiFabricContainerProjectsApiService)(&c.common)
-
+	c.AntreaNodesApi = (*AntreaNodesApiService)(&c.common)
 	return c, nil
 }
 
