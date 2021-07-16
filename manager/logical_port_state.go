@@ -5,7 +5,7 @@
 
 package manager
 
-// Contians realized state of the logical port. For example, transport node on which the port is located, discovered and realized address bindings of the logical port.
+// Contains realized state of the logical port. For example, transport node on which the port is located, discovered and realized address bindings of the logical port.
 type LogicalPortState struct {
 
 	// Logical port bindings discovered automatically

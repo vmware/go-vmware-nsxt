@@ -1460,7 +1460,7 @@ func (a *FabricApiService) ListNodes(ctx context.Context, localVarOptionals map[
 }
 
 /* FabricApiService Return the List of Virtual Network Interfaces (VIFs)
-Returns information about all VIFs. A virtual network interface aggregates network interfaces into a logical interface unit that is indistinuishable from a physical network interface.
+Returns information about all VIFs. A virtual network interface aggregates network interfaces into a logical interface unit that is indistinguishable from a physical network interface.
 * @param ctx context.Context Authentication Context
 @param optional (nil or map[string]interface{}) with one or more of:
     @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
@@ -2301,7 +2301,7 @@ func (a *FabricApiService) ReadNode(ctx context.Context, nodeId string) (manager
 }
 
 /* FabricApiService Return Runtime Status Information for a manager.Node
-Returns connectivity, heartbeat, and version information about a fabric node (host or edge). Note that the LCP connectivity status remains down until after the fabric node has been added as a transpot node and the NSX host switch has been successfully installed. See POST /api/v1/transport-nodes.
+Returns connectivity, heartbeat, and version information about a fabric node (host or edge). Note that the LCP connectivity status remains down until after the fabric node has been added as a transport node and the NSX host switch has been successfully installed. See POST /api/v1/transport-nodes.
 * @param ctx context.Context Authentication Context
 @param nodeId
 @param optional (nil or map[string]interface{}) with one or more of:

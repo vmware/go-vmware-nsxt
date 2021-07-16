@@ -11,7 +11,7 @@ import (
 
 type ComputeCollectionFabricTemplate struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -51,7 +51,7 @@ type ComputeCollectionFabricTemplate struct {
 	// Opaque identifiers meaningful to the API user
 	Tags []common.Tag `json:"tags,omitempty"`
 
-	// Indicates whether NSX components should be automcatically installed. When 'true' NSX components will be automatically installed on the new host added to compute collection.
+	// Indicates whether NSX components should be automatically installed. When 'true' NSX components will be automatically installed on the new host added to compute collection.
 	AutoInstallNsx bool `json:"auto_install_nsx"`
 
 	// Associated compute collection id

@@ -7,6 +7,6 @@ package manager
 
 type FirewallRuleList struct {
 
-	// List of firewall rules in the section. Only homogenous rules are supported.
+	// List of firewall rules in the section. Only Homogeneous rules are supported.
 	Rules []FirewallRule `json:"rules"`
 }

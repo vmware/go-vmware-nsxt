@@ -11,7 +11,7 @@ import (
 
 type FirewallSectionListResult struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -29,6 +29,6 @@ type FirewallSectionListResult struct {
 	// Field by which records are sorted
 	SortBy string `json:"sort_by,omitempty"`
 
-	// List of the firewall sections. The list has to be homogenous.
+	// List of the firewall sections. The list has to be Homogeneous.
 	Results []FirewallSection `json:"results,omitempty"`
 }

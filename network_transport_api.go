@@ -401,7 +401,7 @@ func (a *NetworkTransportApiService) CreateHostSwitchProfile(ctx context.Context
 }
 
 /* NetworkTransportApiService Create a Transport Node
-Enables a fabric node to act as a transport node. A fabric node is a node that contains host switches. Any node can serve as a transport node if it contains a vswitch. Such nodes include but are not limited to hypervisor hosts. Host switches (also known as bridges in OVS) are the individual switches within the vswitch. Virtual machines are connected to the host switches. A transport node is a node that is capable of participating in an NSX overlay or NSX VLAN networking. There are two types of transport nodes; NSX configured transport nodes and manually configured transport nodes. Manually configured transport nodes are currently only supported on KVM hypervisors. For NSX configured transport nodes, NSX creates and manages host switches and virtual tunnel endpoints (VTEPS). On manually configured transport nodes, the user pre-creates all the required entities (eg: Host switch, VTEPS etc) on the host and then provides those details in the payload for this API. It is the user&#39;s responsibility to provide correct configuration of manually configured entities to NSX via this API. NSX doesn&#39;t do any validation of the provided configuration. The type of transport node to be created is determined based on the type of the HostSwitchSpec provided in the host_switch_spec parameter. The required parameter to create a transport node is the node_id. A node ID is created when you add a host with the POST fabric/nodes API or when you register a node with the NSX Manager (using the register-node CLI command). Some of the optional parameters are host_switch_spec, transport_zone_endpoints. The transport_zone_endpoints parameter is an array of transport zone id(s) and id(s) of transport zone profile which is to be associated with that transport zone endpoint. The transport_zone_endpoints associates a transport node to certain transport zone(s). Each transport zone has one designated host switch to handle traffic. The host_switch_spec parameter lets you specify the configuration of all host switches you want to be created for this transport node. The parameter host_switch_spec allows you to specify the configuration of of the host switch for either NSX configured transport nodes or manually configured transport nodes. The host_switches parameter has been deprecated in favor of the host_switch_spec parameter and new API clients should prefer host_switch_spec over host_switches. It is an error to provide both the host_switch_spec and host_switches parameters. When a virtual machine is hosted on a hypervisor that is serving as a transport node, and when you connect the virtual machine&#39;s network adapter to an NSX logical switch, the resulting virtual tunnel endpoint (VTEP) IP address is assigned from the IP pool specified in the static_ip_pool_id parameter. Before you can use these configuration parameters in the POST transport-nodes API, you must gather the following IDs: fabric host or fabric edge node, IP pool, host switch profile (also known as an uplink profile), and transport zone.
+Enables a fabric node to act as a transport node. A fabric node is a node that contains host switches. Any node can serve as a transport node if it contains a vswitch. Such nodes include but are not limited to hypervisor hosts. Host switches (also known as bridges in OVS) are the individual switches within the vswitch. Virtual machines are connected to the host switches. A transport node is a node that is capable of participating in an NSX overlay or NSX VLAN networking. There are two types of transport nodes; NSX configured transport nodes and manually configured transport nodes. Manually configured transport nodes are currently only supported on KVM hypervisors. For NSX configured transport nodes, NSX creates and manages host switches and virtual tunnel endpoints (VTEPS). On manually configured transport nodes, the user pre-creates all the required entities (eg: Host switch, VTEPS etc) on the host and then provides those details in the payload for this API. It is the user&#39;s responsibility to provide correct configuration of manually configured entities to NSX via this API. NSX doesn't do any validation of the provided configuration. The type of transport node to be created is determined based on the type of the HostSwitchSpec provided in the host_switch_spec parameter. The required parameter to create a transport node is the node_id. A node ID is created when you add a host with the POST fabric/nodes API or when you register a node with the NSX Manager (using the register-node CLI command). Some of the optional parameters are host_switch_spec, transport_zone_endpoints. The transport_zone_endpoints parameter is an array of transport zone id(s) and id(s) of transport zone profile which is to be associated with that transport zone endpoint. The transport_zone_endpoints associates a transport node to certain transport zone(s). Each transport zone has one designated host switch to handle traffic. The host_switch_spec parameter lets you specify the configuration of all host switches you want to be created for this transport node. The parameter host_switch_spec allows you to specify the configuration of of the host switch for either NSX configured transport nodes or manually configured transport nodes. The host_switches parameter has been deprecated in favor of the host_switch_spec parameter and new API clients should prefer host_switch_spec over host_switches. It is an error to provide both the host_switch_spec and host_switches parameters. When a virtual machine is hosted on a hypervisor that is serving as a transport node, and when you connect the virtual machine&#39;s network adapter to an NSX logical switch, the resulting virtual tunnel endpoint (VTEP) IP address is assigned from the IP pool specified in the static_ip_pool_id parameter. Before you can use these configuration parameters in the POST transport-nodes API, you must gather the following IDs: fabric host or fabric edge node, IP pool, host switch profile (also known as an uplink profile), and transport zone.
 * @param ctx context.Context Authentication Context
 @param transportNode
 @return manager.TransportNode*/
@@ -1980,7 +1980,7 @@ func (a *NetworkTransportApiService) GetTransportZoneProfile(ctx context.Context
 }
 
 /* NetworkTransportApiService Get a Transport Zone&#39;s Current Runtime Status Information
-Returns information about a specified transport zone, including the number of logical switches in the transport zone, number of logical spitch ports assigned to the transport zone, and number of transport nodes in the transport zone.
+Returns information about a specified transport zone, including the number of logical switches in the transport zone, number of logical switch ports assigned to the transport zone, and number of transport nodes in the transport zone.
 * @param ctx context.Context Authentication Context
 @param zoneId
 @return manager.TransportZoneStatus*/
@@ -2139,7 +2139,7 @@ func (a *NetworkTransportApiService) ListBridgeClusters(ctx context.Context, loc
 }
 
 /* NetworkTransportApiService List All Bridge Endpoints
-Returns information about all configured bridge endoints
+Returns information about all configured bridge endpoints
 * @param ctx context.Context Authentication Context
 @param optional (nil or map[string]interface{}) with one or more of:
     @param "bridgeClusterId" (string) Bridge Cluster Identifier
@@ -3314,7 +3314,7 @@ func (a *NetworkTransportApiService) ReplaceEdgeClusterMemberTransportNodeReplac
 }
 
 /* NetworkTransportApiService Resync a Transport Node
-Resync the manager.TransportNode configuration on a host. It is similar to updating the manager.TransportNode with existing configuration, but force synce these configurations to the host (no backend optimizations).
+Resync the manager.TransportNode configuration on a host. It is similar to updating the manager.TransportNode with existing configuration, but force sync these configurations to the host (no backend optimizations).
 * @param ctx context.Context Authentication Context
 @param transportnodeId
 @return */
@@ -3501,7 +3501,7 @@ func (a *NetworkTransportApiService) UpdateBridgeEndpoint(ctx context.Context, b
 }
 
 /* NetworkTransportApiService Update a cluster profile
-Modifie a specified cluster profile. The body of the PUT request must include the resource_type.
+Modifies a specified cluster profile. The body of the PUT request must include the resource_type.
 * @param ctx context.Context Authentication Context
 @param clusterProfileId
 @param clusterProfile

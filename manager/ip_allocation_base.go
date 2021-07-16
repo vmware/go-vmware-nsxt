@@ -11,7 +11,7 @@ import (
 
 type IpAllocationBase struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -57,6 +57,6 @@ type IpAllocationBase struct {
 	// lease time, in seconds, [60-(2^32-1)], default 86400
 	LeaseTime int64 `json:"lease_time,omitempty"`
 
-	// If an option is defined at server level and not configred at ip-pool/static-binding level, the option will be inherited to ip-pool/static-binding. If both define a same-code option, the option defined at ip-pool/static-binding level take precedence over that defined at server level.
+	// If an option is defined at server level and not configured at ip-pool/static-binding level, the option will be inherited to ip-pool/static-binding. If both define a same-code option, the option defined at ip-pool/static-binding level take precedence over that defined at server level.
 	Options *DhcpOptions `json:"options,omitempty"`
 }

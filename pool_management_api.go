@@ -220,7 +220,7 @@ func (a *PoolManagementApiService) CreateIpBlock(ctx context.Context, ipBlock ma
 }
 
 /* PoolManagementApiService Create subnet of specified size within an IP block
-Carves out a subnet of requested size from the specified IP block. The \&quot;size\&quot; parameter  and the \&quot;block_id \&quot; are the requireds field while invoking this API. If the IP block has sufficient resources/space to allocate a subnet of specified size, the response will contain all the details of the newly created subnet including the display_name, description, cidr &amp; allocation_ranges. Returns a conflict error if the IP block does not have enough resources/space to allocate a subnet of the requested size.
+Carves out a subnet of requested size from the specified IP block. The \&quot;size\&quot; parameter  and the \&quot;block_id \&quot; are required fields for invoking this API. If the IP block has sufficient resources/space to allocate a subnet of specified size, the response will contain all the details of the newly created subnet including the display_name, description, cidr &amp; allocation_ranges. Returns a conflict error if the IP block does not have enough resources/space to allocate a subnet of the requested size.
 * @param ctx context.Context Authentication Context
 @param ipBlockSubnet
 @return manager.IpBlockSubnet*/
@@ -1549,7 +1549,7 @@ func (a *PoolManagementApiService) ReadVtepLabelPool(ctx context.Context, poolId
 }
 
 /* PoolManagementApiService Update an IP Address Block
-Modifies the IP address block with specifed id. display_name, description and cidr are parameters that can be modified. If a new cidr is specified, it should contain all existing subnets in the IP block. Returns a conflict error if the IP address block cidr can not be modified due to the presence of subnets that it contains. Eg: If the IP block contains a subnet 192.168.0.1/24 and we try to change the IP block cidr to 10.1.0.1/16, it results in a conflict.
+Modifies the IP address block with specified id. display_name, description and cidr are parameters that can be modified. If a new cidr is specified, it should contain all existing subnets in the IP block. Returns a conflict error if the IP address block cidr can not be modified due to the presence of subnets that it contains. Eg: If the IP block contains a subnet 192.168.0.1/24 and we try to change the IP block cidr to 10.1.0.1/16, it results in a conflict.
 * @param ctx context.Context Authentication Context
 @param blockId IP address block id
 @param ipBlock

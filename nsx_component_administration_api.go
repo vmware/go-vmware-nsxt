@@ -1681,7 +1681,7 @@ func (a *NsxComponentAdministrationApiService) CreateNTPServiceActionStop(ctx co
 }
 
 /* NsxComponentAdministrationApiService Create node network route
-Add a route to the NSX Manager routing table. For static routes, the route_type, interface_id, netmask, and destination are required parameters. For default routes, the route_type, gateway address, and interface_id are required. For blackhole routes, the route_type and destination are required. All other parameters are optional. When you add a static route, the scope and route_id are created automatically. When you add a default or blackhole route, the route_id is created automatically. The route_id is read-only, meaning that it cannot be modified. All other properties can be modified by deleting and readding the route.
+Add a route to the NSX Manager routing table. For static routes, the route_type, interface_id, netmask, and destination are required parameters. For default routes, the route_type, gateway address, and interface_id are required. For blackhole routes, the route_type and destination are required. All other parameters are optional. When you add a static route, the scope and route_id are created automatically. When you add a default or blackhole route, the route_id is created automatically. The route_id is read-only, meaning that it cannot be modified. All other properties can be modified by deleting and re-adding the route.
 * @param ctx context.Context Authentication Context
 @param nodeRouteProperties
 @return administration.NodeRouteProperties*/
@@ -2284,7 +2284,7 @@ func (a *NsxComponentAdministrationApiService) CreateProxyServiceActionStop(ctx 
 }
 
 /* NsxComponentAdministrationApiService Update http service certificate
-Applies a security certificate to the http service. In the POST request, the CERTIFICATE_ID references a certificate created with the /api/v1/trust-management APIs. Issuing this request causes the http service to restart so that the service can begin using the new certificate. When the POST request succeeds, it doesn&#39;t return a valid response. The request times out because of the restart.
+Applies a security certificate to the http service. In the POST request, the CERTIFICATE_ID references a certificate created with the /api/v1/trust-management APIs. Issuing this request causes the http service to restart so that the service can begin using the new certificate. When the POST request succeeds, it doesn't return a valid response. The request times out because of the restart.
 * @param ctx context.Context Authentication Context
 @param certificateId Certificate ID
 @return */
@@ -3877,7 +3877,7 @@ func (a *NsxComponentAdministrationApiService) DeleteFile(ctx context.Context, f
 }
 
 /* NsxComponentAdministrationApiService Delete node network route
-Delete a route from the NSX Manager routing table. You can modify an existing route by deleting it and then posting the modified version of the route. To verify, remove the route ID from the URI, issue a GET request, and note the absense of the deleted route.
+Delete a route from the NSX Manager routing table. You can modify an existing route by deleting it and then posting the modified version of the route. To verify, remove the route ID from the URI, issue a GET request, and note the absence of the deleted route.
 * @param ctx context.Context Authentication Context
 @param routeId ID of route to delete
 @return */
@@ -5672,7 +5672,7 @@ func (a *NsxComponentAdministrationApiService) ListNodeNetworkRoutes(ctx context
 }
 
 /* NsxComponentAdministrationApiService List node processes
-Returns the number of processes and information about each process. Process information includes 1) mem_resident, which is roughly equivalent to the amount of RAM, in bytes, currently used by the process, 2) parent process ID (ppid), 3) process name, 4) process up time in milliseconds, 5) mem_used, wich is the amount of virtual memory used by the process, in bytes, 6) process start time, in milliseconds since epoch, 7) process ID (pid), 8) CPU time, both user and the system, consumed by the process in milliseconds.
+Returns the number of processes and information about each process. Process information includes 1) mem_resident, which is roughly equivalent to the amount of RAM, in bytes, currently used by the process, 2) parent process ID (ppid), 3) process name, 4) process up time in milliseconds, 5) mem_used, which is the amount of virtual memory used by the process, in bytes, 6) process start time, in milliseconds since epoch, 7) process ID (pid), 8) CPU time, both user and the system, consumed by the process in milliseconds.
 * @param ctx context.Context Authentication Context
 @return administration.NodeProcessPropertiesListResult*/
 func (a *NsxComponentAdministrationApiService) ListNodeProcesses(ctx context.Context) (administration.NodeProcessPropertiesListResult, *http.Response, error) {
@@ -5732,7 +5732,7 @@ func (a *NsxComponentAdministrationApiService) ListNodeProcesses(ctx context.Con
 }
 
 /* NsxComponentAdministrationApiService List node services
-Returns a list of all services available on the NSX Manager applicance.
+Returns a list of all services available on the NSX Manager appliance.
 * @param ctx context.Context Authentication Context
 @return administration.NodeServicePropertiesListResult*/
 func (a *NsxComponentAdministrationApiService) ListNodeServices(ctx context.Context) (administration.NodeServicePropertiesListResult, *http.Response, error) {
@@ -5914,7 +5914,7 @@ func (a *NsxComponentAdministrationApiService) ListNodeUserSshKeys(ctx context.C
 }
 
 /* NsxComponentAdministrationApiService List node users
-Returns the list of users configued to log in to the NSX Manager appliance.
+Returns the list of users configured to log in to the NSX Manager appliance.
 * @param ctx context.Context Authentication Context
 @return manager.NodeUserPropertiesListResult*/
 func (a *NsxComponentAdministrationApiService) ListNodeUsers(ctx context.Context) (manager.NodeUserPropertiesListResult, *http.Response, error) {
@@ -6391,7 +6391,7 @@ Read asynchronous task response
 * @param ctx context.Context Authentication Context
 @param taskId ID of task to read
 @return */
-func (a *NsxComponentAdministrationApiService) ReadAsnycApplianceManagementTaskResponse(ctx context.Context, taskId string) (*http.Response, error) {
+func (a *NsxComponentAdministrationApiService) ReadAsyncApplianceManagementTaskResponse(ctx context.Context, taskId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -8367,7 +8367,7 @@ func (a *NsxComponentAdministrationApiService) ReadNodeSyslogExporter(ctx contex
 }
 
 /* NsxComponentAdministrationApiService Read node user
-Returns information about a specified user who is configued to log in to the NSX Manager appliance
+Returns information about a specified user who is configured to log in to the NSX Manager appliance
 * @param ctx context.Context Authentication Context
 @param userid User id of the user
 @return manager.NodeUserProperties*/

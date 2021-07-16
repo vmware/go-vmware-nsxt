@@ -11,7 +11,7 @@ import (
 
 type VirtualNetworkInterface struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -39,7 +39,7 @@ type VirtualNetworkInterface struct {
 	// Device name of the virtual network interface.
 	DeviceName string `json:"device_name,omitempty"`
 
-	// External Id of the virtual network inferface.
+	// External Id of the virtual network interface.
 	ExternalId string `json:"external_id"`
 
 	// Id of the host on which the vm exists.

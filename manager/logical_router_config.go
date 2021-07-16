@@ -10,7 +10,7 @@ type LogicalRouterConfig struct {
 	// CIDR block defining tier0 to tier1 links
 	ExternalTransitNetworks []string `json:"external_transit_networks,omitempty"`
 
-	// This configuration can be defined only for Active-Standby LogicalRouter to provide | redundancy. For mulitple uplink ports, multiple HaVipConfigs must be defined | and each config will pair exactly two uplink ports. The VIP will move and will | always be owned by the Active node. Note - when HaVipConfig[s] are defined, | configuring dynamic-routing is disallowed.
+	// This configuration can be defined only for Active-Standby LogicalRouter to provide | redundancy. For multiple uplink ports, multiple HaVipConfigs must be defined | and each config will pair exactly two uplink ports. The VIP will move and will | always be owned by the Active node. Note - when HaVipConfig[s] are defined, | configuring dynamic-routing is disallowed.
 	HaVipConfigs []HaVipConfig `json:"ha_vip_configs,omitempty"`
 
 	// CIDR block defining Service router to distributed router links

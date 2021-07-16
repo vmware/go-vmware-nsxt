@@ -5,7 +5,7 @@
 
 package policy
 
-// Policy template placeholdder
+// Policy template placeholder
 type PolicyTemplatePlaceholder struct {
 
 	// Placeholder id

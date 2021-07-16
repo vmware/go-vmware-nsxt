@@ -17,7 +17,7 @@ type IpfixDfwTemplateParameters struct {
 	// Five valid values are allowed: 1. Flow Created. 2. Flow Deleted. 3. Flow Denied. 4. Flow Alert (not used in DropKick implementation). 5. Flow Update.
 	FirewallEvent bool `json:"firewall_event,omitempty"`
 
-	// Two valid values are allowed: 1. 0x00: igress flow to VM. 2. 0x01: egress flow from VM.
+	// Two valid values are allowed: 1. 0x00: ingress flow to VM. 2. 0x01: egress flow from VM.
 	FlowDirection bool `json:"flow_direction,omitempty"`
 
 	// The absolute timestamp (seconds) of the last packet of this flow.

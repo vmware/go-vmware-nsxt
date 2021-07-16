@@ -7,16 +7,16 @@ package trust
 
 type X509Certificate struct {
 
-	// One of the DSA cryptogaphic algorithm's strength parameters, base
+	// One of the DSA cryptographic algorithm's strength parameters, base
 	DsaPublicKeyG string `json:"dsa_public_key_g,omitempty"`
 
-	// One of the DSA cryptogaphic algorithm's strength parameters, prime
+	// One of the DSA cryptographic algorithm's strength parameters, prime
 	DsaPublicKeyP string `json:"dsa_public_key_p,omitempty"`
 
-	// One of the DSA cryptogaphic algorithm's strength parameters, sub-prime
+	// One of the DSA cryptographic algorithm's strength parameters, sub-prime
 	DsaPublicKeyQ string `json:"dsa_public_key_q,omitempty"`
 
-	// One of the DSA cryptogaphic algorithm's strength parameters
+	// One of the DSA cryptographic algorithm's strength parameters
 	DsaPublicKeyY string `json:"dsa_public_key_y,omitempty"`
 
 	// True if this is a CA certificate

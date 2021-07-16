@@ -7,6 +7,6 @@ package manager
 
 type DneRuleList struct {
 
-	// List of DNE rules in the section. Only homogenous rules are supported.
+	// List of DNE rules in the section. Only Homogeneous rules are supported.
 	Rules []DneRule `json:"rules"`
 }

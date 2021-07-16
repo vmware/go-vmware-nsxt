@@ -11,7 +11,7 @@ import (
 
 type EdgeCluster struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -57,7 +57,7 @@ type EdgeCluster struct {
 	// This field is a readonly field which could show deployment_type of members. It would return UNKNOWN if there is no members, and return VIRTUAL_MACHINE| PHYSICAL_MACHINE if all edge members are VIRTUAL_MACHINE|PHYSICAL_MACHINE.
 	DeploymentType string `json:"deployment_type,omitempty"`
 
-	// Edge cluster is homogenous collection of transport nodes. Hence all transport nodes of the cluster must be of same type. This readonly field shows the type of transport nodes.
+	// Edge cluster is Homogeneous collection of transport nodes. Hence all transport nodes of the cluster must be of same type. This readonly field shows the type of transport nodes.
 	MemberNodeType string `json:"member_node_type,omitempty"`
 
 	// EdgeCluster only supports homogeneous members. These member should be backed by either EdgeNode or PublicCloudGatewayNode. DeploymentType and TransportNode type of these nodes should be the same.

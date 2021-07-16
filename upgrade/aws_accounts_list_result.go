@@ -11,7 +11,7 @@ import (
 
 type AwsAccountsListResult struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -29,10 +29,10 @@ type AwsAccountsListResult struct {
 	// Field by which records are sorted
 	SortBy string `json:"sort_by,omitempty"`
 
-	// Instance statistics accross all accounts managed by CSM
+	// Instance statistics across all accounts managed by CSM
 	AllAccountsInstanceStats *InstanceStats `json:"all_accounts_instance_stats,omitempty"`
 
-	// Vpc statistics accross all accounts managed by CSM
+	// Vpc statistics across all accounts managed by CSM
 	AllAccountsVpcStats *VpcStats `json:"all_accounts_vpc_stats,omitempty"`
 
 	// AWS accounts list result

@@ -11,7 +11,7 @@ import (
 
 type NsGroup struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -57,6 +57,6 @@ type NsGroup struct {
 	// Reference to the direct/static members of the NSGroup. Can be ID based expressions only. VirtualMachine cannot be added as a static member.
 	Members []NsGroupSimpleExpression `json:"members,omitempty"`
 
-	// List of tag or ID expressions which define the membership criteria for this NSGroup. An object must satisfy atleast one of these expressions to qualify as a member of this group.
+	// List of tag or ID expressions which define the membership criteria for this NSGroup. An object must satisfy at least one of these expressions to qualify as a member of this group.
 	MembershipCriteria []NsGroupTagExpression `json:"membership_criteria,omitempty"`
 }

@@ -656,7 +656,7 @@ func (a *LicensingApiService) GetLicenseUsageReport(ctx context.Context) (licens
 	return successPayload, localVarHttpResponse, err
 }
 
-/* LicensingApiService Get usage report of all registred modules in CSV format
+/* LicensingApiService Get usage report of all registered modules in CSV format
 Returns usage report of all registered modules in CSV format
 * @param ctx context.Context Authentication Context
 @return licensing.FeatureUsageListInCsvFormat*/
