@@ -29,8 +29,8 @@ type ContainerCluster struct {
 	DisplayName string `json:"display_name,omitempty"`
 	// The type of this resource.
 	ResourceType string `json:"resource_type"`
-	// Specifies list of scope id of discovered resource. e.g. if VHC path is associated with principal identity, who owns the discovered resource, then scope id will be VHC path.
-	ScopeId []string `json:"scope_id,omitempty"`
+	// Specifies list of scope of discovered resource. e.g. if VHC path is associated with principal identity, who owns the discovered resource, then scope id will be VHC path and scope type will be VHC.
+	Scope []DiscoveredResourceScope `json:"scope,omitempty"`
 	// Opaque identifiers meaningful to the API user
 	Tags []common.Tag `json:"tags,omitempty"`
 	// Type of the container cluster. In case of creating container cluster first time, it is expected to pass the valid cluster-type. In case of update, if there is no change in cluster-type, then this field can be omitted in the request. 
