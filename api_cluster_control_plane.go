@@ -316,7 +316,7 @@ type ListClusterControlPlaneOpts struct {
 	SortBy                      optional.String
 }
 
-func (a *SystemAdministrationPolicyClusterControlPlaneApiService) ListClusterControlPlane(ctx context.Context, siteId string, enforcementpointId string, localVarOptionals *ListClusterControlPlaneOpts) (ClusterControlPlaneListResult, *http.Response, error) {
+func (a *SystemAdministrationPolicyClusterControlPlaneApiService) ListClusterControlPlane(ctx context.Context, siteId string, enforcementpointId string, localVarOptionals *ListClusterControlPlaneOpts) (clustercontrolplane.ClusterControlPlaneListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
