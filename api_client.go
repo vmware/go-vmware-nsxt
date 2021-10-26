@@ -68,6 +68,7 @@ type APIClient struct {
 	PoolManagementApi               *PoolManagementApiService
 	RealizationApi                  *RealizationApiService
 	ServicesApi                     *ServicesApiService
+	SupportBundleApi                *SupportBundleApiService
 	TransportEntitiesApi            *TransportEntitiesApiService
 	TroubleshootingAndMonitoringApi *TroubleshootingAndMonitoringApiService
 	UpgradeApi                      *UpgradeApiService
@@ -272,6 +273,7 @@ func NewAPIClient(cfg *Configuration) (*APIClient, error) {
 	c.PoolManagementApi = (*PoolManagementApiService)(&c.common)
 	c.RealizationApi = (*RealizationApiService)(&c.common)
 	c.ServicesApi = (*ServicesApiService)(&c.common)
+	c.SupportBundleApi = (*SupportBundleApiService)(&c.common)
 	c.TransportEntitiesApi = (*TransportEntitiesApiService)(&c.common)
 	c.TroubleshootingAndMonitoringApi = (*TroubleshootingAndMonitoringApiService)(&c.common)
 	c.UpgradeApi = (*UpgradeApiService)(&c.common)
