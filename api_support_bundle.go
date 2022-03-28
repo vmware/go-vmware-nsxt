@@ -1,4 +1,3 @@
-
 /*
  * NSX-T Manager API
  *
@@ -40,17 +39,17 @@ Collect support bundles from registered cluster and fabric nodes.
 @return SupportBundleResult
 */
 
-type SupportBundleApiCollectSupportBundlesCollectOpts struct { 
-	OverrideAsyncResponse optional.Bool
+type SupportBundleApiCollectSupportBundlesCollectOpts struct {
+	OverrideAsyncResponse                optional.Bool
 	RequireDeleteOrOverrideAsyncResponse optional.Bool
 }
 
 func (a *SupportBundleApiService) CollectSupportBundlesCollect(ctx context.Context, supportBundleRequest supportbundle.SupportBundleRequest, localVarOptionals *SupportBundleApiCollectSupportBundlesCollectOpts) (supportbundle.SupportBundleResult, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Post")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue supportbundle.SupportBundleResult
 	)
 
@@ -104,7 +103,7 @@ func (a *SupportBundleApiService) CollectSupportBundlesCollect(ctx context.Conte
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
@@ -114,7 +113,7 @@ func (a *SupportBundleApiService) CollectSupportBundlesCollect(ctx context.Conte
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarReturnValue, localVarHttpResponse, newErr
@@ -139,7 +138,6 @@ func (a *SupportBundleApiService) DeleteSupportBundlesAsyncResponseDeleteAsyncRe
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		
 	)
 
 	// create path and map variables
@@ -184,11 +182,11 @@ func (a *SupportBundleApiService) DeleteSupportBundlesAsyncResponseDeleteAsyncRe
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
 			return localVarHttpResponse, newErr
