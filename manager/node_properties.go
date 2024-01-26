@@ -11,14 +11,14 @@ import (
 
 type NodeProperties struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
 
 	Self *common.SelfResourceLink `json:"_self,omitempty"`
 
-	// Node BIOS Unique Indentifier
+	// Node BIOS Unique Identifier
 	BiosUuid string `json:"bios_uuid,omitempty"`
 
 	// NSX CLI inactivity timeout, set to 0 to configure no timeout

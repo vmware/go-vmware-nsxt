@@ -11,7 +11,7 @@ import (
 
 type RealizedSecurityGroup struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -68,6 +68,6 @@ type RealizedSecurityGroup struct {
 	// Realization state of this object
 	State string `json:"state"`
 
-	// Reference to the evaluted members of the Security Group.
+	// Reference to the evaluated members of the Security Group.
 	Evaluations []RealizedSecurityGroupMemberEvaluation `json:"evaluations,omitempty"`
 }

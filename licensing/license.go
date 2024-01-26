@@ -11,7 +11,7 @@ import (
 
 type License struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []common.ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`
@@ -30,7 +30,7 @@ type License struct {
 	// semicolon delimited feature list
 	Features string `json:"features,omitempty"`
 
-	// true for evalution license
+	// true for evaluation license
 	IsEval bool `json:"is_eval,omitempty"`
 
 	// whether the license has expired

@@ -7,7 +7,7 @@ package administration
 
 type BackupOperationHistory struct {
 
-	// Statuses of previous cluser backups
+	// Statuses of previous cluster backups
 	ClusterBackupStatuses []BackupOperationStatus `json:"cluster_backup_statuses,omitempty"`
 
 	// Statuses of previous inventory backups

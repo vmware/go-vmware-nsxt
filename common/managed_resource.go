@@ -7,7 +7,7 @@ package common
 
 type ManagedResource struct {
 
-	// The server will populate this field when returing the resource. Ignored on PUT and POST.
+	// The server will populate this field when returning the resource. Ignored on PUT and POST.
 	Links []ResourceLink `json:"_links,omitempty"`
 
 	Schema string `json:"_schema,omitempty"`

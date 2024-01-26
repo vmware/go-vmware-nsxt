@@ -23,6 +23,6 @@ type PortConnectionLogicalSwitch struct {
 	// Logical Ports that are attached to a VIF/VM
 	VmPorts []LogicalPort `json:"vm_ports,omitempty"`
 
-	// Virutal Network Interfaces that are attached to the Logical Ports
+	// Virtual Network Interfaces that are attached to the Logical Ports
 	VmVnics []VirtualNetworkInterface `json:"vm_vnics,omitempty"`
 }
