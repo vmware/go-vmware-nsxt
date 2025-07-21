@@ -9,10 +9,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/vmware/go-vmware-nsxt/policy"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/vmware/go-vmware-nsxt/policy"
 )
 
 // Linger please
@@ -22,13 +23,16 @@ var (
 
 type PolicyApiService service
 
-/* PolicyApiService Create a new Domain Deployment Map under infra
+/*
+	PolicyApiService Create a new Domain Deployment Map under infra
+
 If the passed Domain Deployment Map does not already exist, create a new Domain Deployment Map. If it already exist, replace it.
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param domainDeploymentMapId Domain Deployment Map ID
 @param domainDeploymentMap
-@return DomainDeploymentMap*/
+@return DomainDeploymentMap
+*/
 func (a *PolicyApiService) CreateOrUpdateDomainDeploymentMapForInfra(ctx context.Context, domainId string, domainDeploymentMapId string, domainDeploymentMap policy.DomainDeploymentMap) (policy.DomainDeploymentMap, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -89,13 +93,16 @@ func (a *PolicyApiService) CreateOrUpdateDomainDeploymentMapForInfra(ctx context
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create/update a new Enforcement Point under infra
+/*
+	PolicyApiService Create/update a new Enforcement Point under infra
+
 If the passed Enforcement Point does not already exist, create a new Enforcement Point. If it already exists, replace it.
 * @param ctx context.Context Authentication Context
 @param deploymentZoneId Deployment zone id
 @param enforcementpointId EnforcementPoint id
 @param enforcementPoint
-@return EnforcementPoint*/
+@return EnforcementPoint
+*/
 func (a *PolicyApiService) CreateOrUpdateEnforcementPointForInfra(ctx context.Context, deploymentZoneId string, enforcementpointId string, enforcementPoint policy.EnforcementPoint) (policy.EnforcementPoint, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -156,12 +163,15 @@ func (a *PolicyApiService) CreateOrUpdateEnforcementPointForInfra(ctx context.Co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create or update a template.
+/*
+	PolicyApiService Create or update a template.
+
 Create a new template if the specified template id does not correspond to an existing template. Update the template if otherwise.
 * @param ctx context.Context Authentication Context
 @param templateId Template identifier
 @param policyTemplate
-@return PolicyTemplate*/
+@return PolicyTemplate
+*/
 func (a *PolicyApiService) CreateOrUpdateTemplate(ctx context.Context, templateId string, policyTemplate policy.PolicyTemplate) (policy.PolicyTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -221,12 +231,15 @@ func (a *PolicyApiService) CreateOrUpdateTemplate(ctx context.Context, templateI
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete CommunicationEntry
+/*
+	PolicyApiService Delete CommunicationEntry
+
 Delete CommunicationEntry
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param communicationEntryId CommunicationEntry ID
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteCommunicationEntry(ctx context.Context, domainId string, communicationEntryId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -280,11 +293,14 @@ func (a *PolicyApiService) DeleteCommunicationEntry(ctx context.Context, domainI
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete CommunicationProfile
+/*
+	PolicyApiService Delete CommunicationProfile
+
 Delete CommunicationProfile
 * @param ctx context.Context Authentication Context
 @param communicationProfileId CommunicationProfile ID
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteCommunicationProfile(ctx context.Context, communicationProfileId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -337,12 +353,15 @@ func (a *PolicyApiService) DeleteCommunicationProfile(ctx context.Context, commu
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete CommunicationProfileEntry
+/*
+	PolicyApiService Delete CommunicationProfileEntry
+
 Delete CommunicationProfileEntry
 * @param ctx context.Context Authentication Context
 @param communicationProfileId CommunicationProfile ID
 @param communicationProfileEntryId CommunicationProfileEntry ID
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteCommunicationProfileEntry(ctx context.Context, communicationProfileId string, communicationProfileEntryId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -396,11 +415,14 @@ func (a *PolicyApiService) DeleteCommunicationProfileEntry(ctx context.Context, 
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete Domain and all the entities contained by this domain
+/*
+	PolicyApiService Delete Domain and all the entities contained by this domain
+
 Delete the domain along with all the entities contained by this domain. The groups that are a part of this domain are also deleted along with the domain.
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteDomain(ctx context.Context, domainId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -453,12 +475,15 @@ func (a *PolicyApiService) DeleteDomain(ctx context.Context, domainId string) (*
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete Domain Deployment Map
+/*
+	PolicyApiService Delete Domain Deployment Map
+
 Delete Domain Deployment Map
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param domainDeploymentMapId domain-deployment-map-id
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteDomainDeploymentMap(ctx context.Context, domainId string, domainDeploymentMapId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -512,12 +537,15 @@ func (a *PolicyApiService) DeleteDomainDeploymentMap(ctx context.Context, domain
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete EnforcementPoint
+/*
+	PolicyApiService Delete EnforcementPoint
+
 Delete EnforcementPoint
 * @param ctx context.Context Authentication Context
 @param deploymentZoneId Deployment zone id
 @param enforcementpointId enforcementpoint-id
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteEnforcementPoint(ctx context.Context, deploymentZoneId string, enforcementpointId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -571,14 +599,19 @@ func (a *PolicyApiService) DeleteEnforcementPoint(ctx context.Context, deploymen
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete Group
+/*
+	PolicyApiService Delete Group
+
 Delete Group
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param groupId Group ID
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "force" (bool) Force delete the resource even if it is being used somewhere
-@return */
+
+	@param "force" (bool) Force delete the resource even if it is being used somewhere
+
+@return
+*/
 func (a *PolicyApiService) DeleteGroup(ctx context.Context, domainId string, groupId string, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -639,12 +672,15 @@ func (a *PolicyApiService) DeleteGroup(ctx context.Context, domainId string, gro
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete Service entry
+/*
+	PolicyApiService Delete Service entry
+
 Delete Service entry
 * @param ctx context.Context Authentication Context
 @param serviceId Service ID
 @param serviceEntryId Service entry ID
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteServiceEntry(ctx context.Context, serviceId string, serviceEntryId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -698,11 +734,14 @@ func (a *PolicyApiService) DeleteServiceEntry(ctx context.Context, serviceId str
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete Service
+/*
+	PolicyApiService Delete Service
+
 Delete Service
 * @param ctx context.Context Authentication Context
 @param serviceId Service ID
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteServiceForTenant(ctx context.Context, serviceId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -755,11 +794,14 @@ func (a *PolicyApiService) DeleteServiceForTenant(ctx context.Context, serviceId
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Delete template.
+/*
+	PolicyApiService Delete template.
+
 Delete a template.
 * @param ctx context.Context Authentication Context
 @param templateId Template identifier
-@return */
+@return
+*/
 func (a *PolicyApiService) DeleteTemplate(ctx context.Context, templateId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
@@ -812,12 +854,15 @@ func (a *PolicyApiService) DeleteTemplate(ctx context.Context, templateId string
 	return localVarHttpResponse, err
 }
 
-/* PolicyApiService Deploy template.
+/*
+	PolicyApiService Deploy template.
+
 Read a template, populate the placeholders&#39; fields with the parameters&#39; values, and deploy the template body by creating or updating all the nested policy objects inside the AbstractSpace object.
 * @param ctx context.Context Authentication Context
 @param templateId Template identifier
 @param policyTemplateParameters
-@return AbstractSpace*/
+@return AbstractSpace
+*/
 func (a *PolicyApiService) DeployTemplateDeploy(ctx context.Context, templateId string, policyTemplateParameters policy.PolicyTemplateParameters) (policy.AbstractSpace, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -877,17 +922,22 @@ func (a *PolicyApiService) DeployTemplateDeploy(ctx context.Context, templateId 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List CommunicationEntries
+/*
+	PolicyApiService List CommunicationEntries
+
 List CommunicationEntries
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return CommunicationEntryListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return CommunicationEntryListResult
+*/
 func (a *PolicyApiService) ListCommunicationEntry(ctx context.Context, domainId string, localVarOptionals map[string]interface{}) (policy.CommunicationEntryListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -976,17 +1026,22 @@ func (a *PolicyApiService) ListCommunicationEntry(ctx context.Context, domainId 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List CommunicationProfileEntries for CommunicationProfile
+/*
+	PolicyApiService List CommunicationProfileEntries for CommunicationProfile
+
 Paginated list of CommunicationProfileEntries for the given CommunicationProfile.
 * @param ctx context.Context Authentication Context
 @param communicationProfileId CommunicationProfile ID
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return CommunicationProfileEntryListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return CommunicationProfileEntryListResult
+*/
 func (a *PolicyApiService) ListCommunicationProfileEntries(ctx context.Context, communicationProfileId string, localVarOptionals map[string]interface{}) (policy.CommunicationProfileEntryListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1075,16 +1130,21 @@ func (a *PolicyApiService) ListCommunicationProfileEntries(ctx context.Context, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List CommunicationProfiles
+/*
+	PolicyApiService List CommunicationProfiles
+
 Paginated list of CommunicationProfiles.
 * @param ctx context.Context Authentication Context
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return CommunicationProfileListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return CommunicationProfileListResult
+*/
 func (a *PolicyApiService) ListCommunicationProfiles(ctx context.Context, localVarOptionals map[string]interface{}) (policy.CommunicationProfileListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1172,16 +1232,21 @@ func (a *PolicyApiService) ListCommunicationProfiles(ctx context.Context, localV
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Deployment Zones for infra
+/*
+	PolicyApiService List Deployment Zones for infra
+
 Paginated list of all Deployment zones for infra.
 * @param ctx context.Context Authentication Context
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return DeploymentZoneListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return DeploymentZoneListResult
+*/
 func (a *PolicyApiService) ListDeploymentZonesForInfra(ctx context.Context, localVarOptionals map[string]interface{}) (policy.DeploymentZoneListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1269,17 +1334,22 @@ func (a *PolicyApiService) ListDeploymentZonesForInfra(ctx context.Context, loca
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Domain Deployment maps for infra
+/*
+	PolicyApiService List Domain Deployment maps for infra
+
 Paginated list of all Domain Deployment Entries for infra.
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return DomainDeploymentMapListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return DomainDeploymentMapListResult
+*/
 func (a *PolicyApiService) ListDomainDeploymentMapsForInfra(ctx context.Context, domainId string, localVarOptionals map[string]interface{}) (policy.DomainDeploymentMapListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1368,16 +1438,21 @@ func (a *PolicyApiService) ListDomainDeploymentMapsForInfra(ctx context.Context,
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List domains for infra
+/*
+	PolicyApiService List domains for infra
+
 Paginated list of all domains for infra.
 * @param ctx context.Context Authentication Context
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return DomainListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return DomainListResult
+*/
 func (a *PolicyApiService) ListDomainForInfra(ctx context.Context, localVarOptionals map[string]interface{}) (policy.DomainListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1465,17 +1540,22 @@ func (a *PolicyApiService) ListDomainForInfra(ctx context.Context, localVarOptio
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List enforcementpoints for infra
+/*
+	PolicyApiService List enforcementpoints for infra
+
 Paginated list of all enforcementpoints for infra.
 * @param ctx context.Context Authentication Context
 @param deploymentZoneId
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return EnforcementPointListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return EnforcementPointListResult
+*/
 func (a *PolicyApiService) ListEnforcementPointForInfra(ctx context.Context, deploymentZoneId string, localVarOptionals map[string]interface{}) (policy.EnforcementPointListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1564,16 +1644,21 @@ func (a *PolicyApiService) ListEnforcementPointForInfra(ctx context.Context, dep
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Enforcement Points
+/*
+	PolicyApiService List Enforcement Points
+
 Paginated list of all enforcement points. Returns the populated enforcement points.
 * @param ctx context.Context Authentication Context
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return RealizedEnforcementPointListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return RealizedEnforcementPointListResult
+*/
 func (a *PolicyApiService) ListEnforcementPointRealizedStates(ctx context.Context, localVarOptionals map[string]interface{}) (policy.RealizedEnforcementPointListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1661,17 +1746,22 @@ func (a *PolicyApiService) ListEnforcementPointRealizedStates(ctx context.Contex
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Firewall Sections
+/*
+	PolicyApiService List Firewall Sections
+
 Paginated list of all Firewalls. Returns populated Firewalls.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return RealizedFirewallSectionListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return RealizedFirewallSectionListResult
+*/
 func (a *PolicyApiService) ListFirewallSectionRealizedStates(ctx context.Context, enforcementPointName string, localVarOptionals map[string]interface{}) (policy.RealizedFirewallSectionListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1760,17 +1850,22 @@ func (a *PolicyApiService) ListFirewallSectionRealizedStates(ctx context.Context
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Groups for a domain
+/*
+	PolicyApiService List Groups for a domain
+
 List Groups for a domain
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return GroupListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return GroupListResult
+*/
 func (a *PolicyApiService) ListGroupForDomain(ctx context.Context, domainId string, localVarOptionals map[string]interface{}) (policy.GroupListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1859,17 +1954,22 @@ func (a *PolicyApiService) ListGroupForDomain(ctx context.Context, domainId stri
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List NS Groups
+/*
+	PolicyApiService List NS Groups
+
 Paginated list of all NSGroups. Returns populated NSGroups.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return RealizedNsGroupListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return RealizedNsGroupListResult
+*/
 func (a *PolicyApiService) ListNSGroupRealizedStates(ctx context.Context, enforcementPointName string, localVarOptionals map[string]interface{}) (policy.RealizedNsGroupListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -1958,17 +2058,22 @@ func (a *PolicyApiService) ListNSGroupRealizedStates(ctx context.Context, enforc
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Realized NSServices
+/*
+	PolicyApiService List Realized NSServices
+
 Paginated list of all Realized NSService.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return RealizedNsServiceListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return RealizedNsServiceListResult
+*/
 func (a *PolicyApiService) ListNSServiceRealizedStates(ctx context.Context, enforcementPointName string, localVarOptionals map[string]interface{}) (policy.RealizedNsServiceListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2057,17 +2162,22 @@ func (a *PolicyApiService) ListNSServiceRealizedStates(ctx context.Context, enfo
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Security Groups
+/*
+	PolicyApiService List Security Groups
+
 Paginated list of all Security Groups. Returns populated Security Groups.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return RealizedSecurityGroupListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return RealizedSecurityGroupListResult
+*/
 func (a *PolicyApiService) ListSecurityGroupRealizedStates(ctx context.Context, enforcementPointName string, localVarOptionals map[string]interface{}) (policy.RealizedSecurityGroupListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2156,17 +2266,22 @@ func (a *PolicyApiService) ListSecurityGroupRealizedStates(ctx context.Context, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Service entries for the given service
+/*
+	PolicyApiService List Service entries for the given service
+
 Paginated list of Service entries for the given service
 * @param ctx context.Context Authentication Context
 @param serviceId Service ID
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return ServiceEntryListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return ServiceEntryListResult
+*/
 func (a *PolicyApiService) ListServiceEntries(ctx context.Context, serviceId string, localVarOptionals map[string]interface{}) (policy.ServiceEntryListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2255,16 +2370,21 @@ func (a *PolicyApiService) ListServiceEntries(ctx context.Context, serviceId str
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Services for infra
+/*
+	PolicyApiService List Services for infra
+
 Paginated list of Services for infra.
 * @param ctx context.Context Authentication Context
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return ServiceListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return ServiceListResult
+*/
 func (a *PolicyApiService) ListServicesForTenant(ctx context.Context, localVarOptionals map[string]interface{}) (policy.ServiceListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2352,16 +2472,21 @@ func (a *PolicyApiService) ListServicesForTenant(ctx context.Context, localVarOp
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService List Policy Templates
+/*
+	PolicyApiService List Policy Templates
+
 List Policy Templates
 * @param ctx context.Context Authentication Context
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
-    @param "includedFields" (string) Comma separated list of fields that should be included to result of query
-    @param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
-    @param "sortAscending" (bool)
-    @param "sortBy" (string) Field by which records are sorted
-@return PolicyTemplateListResult*/
+
+	@param "cursor" (string) Opaque cursor to be used for getting next page of records (supplied by current result page)
+	@param "includedFields" (string) Comma separated list of fields that should be included to result of query
+	@param "pageSize" (int64) Maximum number of results to return in this page (server may return fewer)
+	@param "sortAscending" (bool)
+	@param "sortBy" (string) Field by which records are sorted
+
+@return PolicyTemplateListResult
+*/
 func (a *PolicyApiService) ListTemplates(ctx context.Context, localVarOptionals map[string]interface{}) (policy.PolicyTemplateListResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2449,12 +2574,15 @@ func (a *PolicyApiService) ListTemplates(ctx context.Context, localVarOptionals 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read CommunicationEntry
+/*
+	PolicyApiService Read CommunicationEntry
+
 Read CommunicationEntry
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param communicationEntryId CommunicationEntry ID
-@return CommunicationEntry*/
+@return CommunicationEntry
+*/
 func (a *PolicyApiService) ReadCommunicationEntry(ctx context.Context, domainId string, communicationEntryId string) (policy.CommunicationEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2513,11 +2641,14 @@ func (a *PolicyApiService) ReadCommunicationEntry(ctx context.Context, domainId 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read communication-map
+/*
+	PolicyApiService Read communication-map
+
 Read communication-map for a domain.
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
-@return CommunicationMap*/
+@return CommunicationMap
+*/
 func (a *PolicyApiService) ReadCommunicationMapForDomain(ctx context.Context, domainId string) (policy.CommunicationMap, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2575,11 +2706,14 @@ func (a *PolicyApiService) ReadCommunicationMapForDomain(ctx context.Context, do
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read CommunicationProfile
+/*
+	PolicyApiService Read CommunicationProfile
+
 Read a CommunicationProfile.
 * @param ctx context.Context Authentication Context
 @param communicationProfileId CommunicationProfile ID
-@return CommunicationProfile*/
+@return CommunicationProfile
+*/
 func (a *PolicyApiService) ReadCommunicationProfile(ctx context.Context, communicationProfileId string) (policy.CommunicationProfile, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2637,12 +2771,15 @@ func (a *PolicyApiService) ReadCommunicationProfile(ctx context.Context, communi
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read CommunicationProfileEntry
+/*
+	PolicyApiService Read CommunicationProfileEntry
+
 Read CommunicationProfileEntry
 * @param ctx context.Context Authentication Context
 @param communicationProfileId CommunicationProfile ID
 @param communicationProfileEntryId CommunicationProfileEntry ID
-@return CommunicationProfileEntry*/
+@return CommunicationProfileEntry
+*/
 func (a *PolicyApiService) ReadCommunicationProfileEntry(ctx context.Context, communicationProfileId string, communicationProfileEntryId string) (policy.CommunicationProfileEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2701,11 +2838,14 @@ func (a *PolicyApiService) ReadCommunicationProfileEntry(ctx context.Context, co
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read a DeploymentZone
+/*
+	PolicyApiService Read a DeploymentZone
+
 Read a Deployment Zone
 * @param ctx context.Context Authentication Context
 @param deploymentZoneId Deployment Zone id
-@return DeploymentZone*/
+@return DeploymentZone
+*/
 func (a *PolicyApiService) ReadDeploymentZoneInfra(ctx context.Context, deploymentZoneId string) (policy.DeploymentZone, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2763,12 +2903,15 @@ func (a *PolicyApiService) ReadDeploymentZoneInfra(ctx context.Context, deployme
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read a DomainDeploymentMap
+/*
+	PolicyApiService Read a DomainDeploymentMap
+
 Read a Domain Deployment Map
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param domainDeploymentMapId Domain Deployment Map id
-@return DomainDeploymentMap*/
+@return DomainDeploymentMap
+*/
 func (a *PolicyApiService) ReadDomainDeploymentMapForInfra(ctx context.Context, domainId string, domainDeploymentMapId string) (policy.DomainDeploymentMap, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2827,11 +2970,14 @@ func (a *PolicyApiService) ReadDomainDeploymentMapForInfra(ctx context.Context, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read domain
+/*
+	PolicyApiService Read domain
+
 Read a domain.
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
-@return Domain*/
+@return Domain
+*/
 func (a *PolicyApiService) ReadDomainForInfra(ctx context.Context, domainId string) (policy.Domain, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2889,12 +3035,15 @@ func (a *PolicyApiService) ReadDomainForInfra(ctx context.Context, domainId stri
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read an Enforcement Point
+/*
+	PolicyApiService Read an Enforcement Point
+
 Read an Enforcement Point
 * @param ctx context.Context Authentication Context
 @param deploymentZoneId Deployment zone id
 @param enforcementpointId EnforcementPoint id
-@return EnforcementPoint*/
+@return EnforcementPoint
+*/
 func (a *PolicyApiService) ReadEnforcementPointForInfra(ctx context.Context, deploymentZoneId string, enforcementpointId string) (policy.EnforcementPoint, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -2953,11 +3102,14 @@ func (a *PolicyApiService) ReadEnforcementPointForInfra(ctx context.Context, dep
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read Enforcement Point
+/*
+	PolicyApiService Read Enforcement Point
+
 Read a Enforcement Point and the complete tree underneath. Returns the populated enforcement point object.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
-@return RealizedEnforcementPoint*/
+@return RealizedEnforcementPoint
+*/
 func (a *PolicyApiService) ReadEnforcementPointRealizedState(ctx context.Context, enforcementPointName string) (policy.RealizedEnforcementPoint, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3015,12 +3167,15 @@ func (a *PolicyApiService) ReadEnforcementPointRealizedState(ctx context.Context
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read Firewall
+/*
+	PolicyApiService Read Firewall
+
 Read a Firewall and the complete tree underneath. Returns the populated Firewall object.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
 @param firewallSectionId Firewall Section Id
-@return RealizedFirewallSection*/
+@return RealizedFirewallSection
+*/
 func (a *PolicyApiService) ReadFirewallSectionRealizedState(ctx context.Context, enforcementPointName string, firewallSectionId string) (policy.RealizedFirewallSection, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3079,12 +3234,15 @@ func (a *PolicyApiService) ReadFirewallSectionRealizedState(ctx context.Context,
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read group
+/*
+	PolicyApiService Read group
+
 Read group
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param groupId Group ID
-@return Group*/
+@return Group
+*/
 func (a *PolicyApiService) ReadGroupForDomain(ctx context.Context, domainId string, groupId string) (policy.Group, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3143,10 +3301,13 @@ func (a *PolicyApiService) ReadGroupForDomain(ctx context.Context, domainId stri
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read infra
+/*
+	PolicyApiService Read infra
+
 Read infra. Returns only the infra related properties. Inner object are not populated.
 * @param ctx context.Context Authentication Context
-@return Infra*/
+@return Infra
+*/
 func (a *PolicyApiService) ReadInfra(ctx context.Context) (policy.Infra, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3203,12 +3364,15 @@ func (a *PolicyApiService) ReadInfra(ctx context.Context) (policy.Infra, *http.R
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read Group
+/*
+	PolicyApiService Read Group
+
 Read a NSGroup and the complete tree underneath. Returns the populated NSgroup object.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
 @param nsgroupName Group Name
-@return RealizedNsGroup*/
+@return RealizedNsGroup
+*/
 func (a *PolicyApiService) ReadNSGroupRealizedState(ctx context.Context, enforcementPointName string, nsgroupName string) (policy.RealizedNsGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3267,12 +3431,15 @@ func (a *PolicyApiService) ReadNSGroupRealizedState(ctx context.Context, enforce
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read NSService
+/*
+	PolicyApiService Read NSService
+
 Read a NSService.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
 @param nsserviceName NSService Name
-@return RealizedNsService*/
+@return RealizedNsService
+*/
 func (a *PolicyApiService) ReadNSServiceRealizedState(ctx context.Context, enforcementPointName string, nsserviceName string) (policy.RealizedNsService, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3331,12 +3498,15 @@ func (a *PolicyApiService) ReadNSServiceRealizedState(ctx context.Context, enfor
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read Group
+/*
+	PolicyApiService Read Group
+
 Read a Security Group and the complete tree underneath. Returns the populated Security Group object.
 * @param ctx context.Context Authentication Context
 @param enforcementPointName Enforcement Point Name
 @param securitygroupName Group Name
-@return RealizedSecurityGroup*/
+@return RealizedSecurityGroup
+*/
 func (a *PolicyApiService) ReadSecurityGroupRealizedState(ctx context.Context, enforcementPointName string, securitygroupName string) (policy.RealizedSecurityGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3395,12 +3565,15 @@ func (a *PolicyApiService) ReadSecurityGroupRealizedState(ctx context.Context, e
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Service entry
+/*
+	PolicyApiService Service entry
+
 Service entry
 * @param ctx context.Context Authentication Context
 @param serviceId Service ID
 @param serviceEntryId Service entry ID
-@return ServiceEntry*/
+@return ServiceEntry
+*/
 func (a *PolicyApiService) ReadServiceEntry(ctx context.Context, serviceId string, serviceEntryId string) (policy.ServiceEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3459,11 +3632,14 @@ func (a *PolicyApiService) ReadServiceEntry(ctx context.Context, serviceId strin
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read a service
+/*
+	PolicyApiService Read a service
+
 Read a service
 * @param ctx context.Context Authentication Context
 @param serviceId Service ID
-@return Service*/
+@return Service
+*/
 func (a *PolicyApiService) ReadServiceForTenant(ctx context.Context, serviceId string) (policy.Service, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3521,11 +3697,14 @@ func (a *PolicyApiService) ReadServiceForTenant(ctx context.Context, serviceId s
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Read template.
+/*
+	PolicyApiService Read template.
+
 Read a template and returns the template properties for a given template identifier.
 * @param ctx context.Context Authentication Context
 @param templateId Template identifier
-@return PolicyTemplate*/
+@return PolicyTemplate
+*/
 func (a *PolicyApiService) ReadTemplate(ctx context.Context, templateId string) (policy.PolicyTemplate, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
@@ -3583,13 +3762,16 @@ func (a *PolicyApiService) ReadTemplate(ctx context.Context, templateId string) 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create or update a CommunicationEntry
+/*
+	PolicyApiService Create or update a CommunicationEntry
+
 Update the CommunicationEntry. If a CommunicationEntry with the communication-entry-id is not already present, this API fails with a 404. Creation of CommunicationEntries is not allowed using this API.
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param communicationEntryId CommunicationEntry ID
 @param communicationEntry
-@return CommunicationEntry*/
+@return CommunicationEntry
+*/
 func (a *PolicyApiService) UpdateCommunicationEntry(ctx context.Context, domainId string, communicationEntryId string, communicationEntry policy.CommunicationEntry) (policy.CommunicationEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -3650,12 +3832,15 @@ func (a *PolicyApiService) UpdateCommunicationEntry(ctx context.Context, domainI
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Update communication map
+/*
+	PolicyApiService Update communication map
+
 Update the communication map for a domain. This is a full replace. All the CommunicationEntries are replaced.
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param communicationMap
-@return CommunicationMap*/
+@return CommunicationMap
+*/
 func (a *PolicyApiService) UpdateCommunicationMapForDomain(ctx context.Context, domainId string, communicationMap policy.CommunicationMap) (policy.CommunicationMap, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -3715,12 +3900,15 @@ func (a *PolicyApiService) UpdateCommunicationMapForDomain(ctx context.Context, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create or update a CommunicationProfile
+/*
+	PolicyApiService Create or update a CommunicationProfile
+
 Create a new CommunicationProfile if a CommunicationProfile with the given ID does not already exist. Creates new CommunicationProfileEntries if populated in the CommunicationProfile. If a CommunicationProfile with the given ID already exists, update the CommunicationProfile including the nested CommunicationProfileEntries. This is a full replace. This is the ONLY way to create CommunicationProfileEntries and to add them to a CommunicationProfile.
 * @param ctx context.Context Authentication Context
 @param communicationProfileId CommunicationProfile ID
 @param communicationProfile
-@return CommunicationProfile*/
+@return CommunicationProfile
+*/
 func (a *PolicyApiService) UpdateCommunicationProfile(ctx context.Context, communicationProfileId string, communicationProfile policy.CommunicationProfile) (policy.CommunicationProfile, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -3780,13 +3968,16 @@ func (a *PolicyApiService) UpdateCommunicationProfile(ctx context.Context, commu
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create or update a CommunicationProfileEntry
+/*
+	PolicyApiService Create or update a CommunicationProfileEntry
+
 Update the CommunicationProfileEntry. If a CommunicationProfileEntry with the communication-profile-entry-id is not already present, this API fails with a 404. Creation of CommunicationProfileEntries is not allowed using this API.
 * @param ctx context.Context Authentication Context
 @param communicationProfileId CommunicationProfile ID
 @param communicationProfileEntryId CommunicationProfileEntry ID
 @param communicationProfileEntry
-@return CommunicationProfileEntry*/
+@return CommunicationProfileEntry
+*/
 func (a *PolicyApiService) UpdateCommunicationProfileEntry(ctx context.Context, communicationProfileId string, communicationProfileEntryId string, communicationProfileEntry policy.CommunicationProfileEntry) (policy.CommunicationProfileEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -3847,12 +4038,15 @@ func (a *PolicyApiService) UpdateCommunicationProfileEntry(ctx context.Context, 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create or update a domain
+/*
+	PolicyApiService Create or update a domain
+
 If a domain with the domain-id is not already present, create a new domain. If it already exists, update the domain including the nested groups. This is a full replace
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param domain
-@return Domain*/
+@return Domain
+*/
 func (a *PolicyApiService) UpdateDomainForInfra(ctx context.Context, domainId string, domain policy.Domain) (policy.Domain, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -3912,16 +4106,19 @@ func (a *PolicyApiService) UpdateDomainForInfra(ctx context.Context, domainId st
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create or update a group
+/*
+	PolicyApiService Create or update a group
+
 If a group with the group-id is not already present, create a new group. If it already exists, update the group.
 * @param ctx context.Context Authentication Context
 @param domainId Domain ID
 @param groupId Group ID
 @param group
-@return Group*/
+@return Group
+*/
 func (a *PolicyApiService) UpdateGroupForDomain(ctx context.Context, domainId string, groupId string, group policy.Group) (policy.Group, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Post")
+		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
@@ -3979,11 +4176,14 @@ func (a *PolicyApiService) UpdateGroupForDomain(ctx context.Context, domainId st
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Update the infra including all the nested entities
+/*
+	PolicyApiService Update the infra including all the nested entities
+
 Update the infra including all the nested entities
 * @param ctx context.Context Authentication Context
 @param infra
-@return Infra*/
+@return Infra
+*/
 func (a *PolicyApiService) UpdateInfra(ctx context.Context, infra policy.Infra) (policy.Infra, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -4042,13 +4242,16 @@ func (a *PolicyApiService) UpdateInfra(ctx context.Context, infra policy.Infra) 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create or update a ServiceEntry
+/*
+	PolicyApiService Create or update a ServiceEntry
+
 If a service entry with the service-entry-id is not already present, create a new service entry. If it already exists, update the service entry.
 * @param ctx context.Context Authentication Context
 @param serviceId Service ID
 @param serviceEntryId Service entry ID
 @param serviceEntry
-@return ServiceEntry*/
+@return ServiceEntry
+*/
 func (a *PolicyApiService) UpdateServiceEntry(ctx context.Context, serviceId string, serviceEntryId string, serviceEntry policy.ServiceEntry) (policy.ServiceEntry, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
@@ -4109,12 +4312,15 @@ func (a *PolicyApiService) UpdateServiceEntry(ctx context.Context, serviceId str
 	return successPayload, localVarHttpResponse, err
 }
 
-/* PolicyApiService Create or update a Service
+/*
+	PolicyApiService Create or update a Service
+
 Create a new service if a service with the given ID does not already exist. Creates new service entries if populated in the service. If a service with the given ID already exists, update the service including the nested service entries. This is a full replace.
 * @param ctx context.Context Authentication Context
 @param serviceId Service ID
 @param service
-@return Service*/
+@return Service
+*/
 func (a *PolicyApiService) UpdateServiceForTenant(ctx context.Context, serviceId string, service policy.Service) (policy.Service, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")

@@ -72,9 +72,6 @@ type NatRule struct {
 	// IP Address | CIDR | (null implies Any)
 	MatchSourceNetwork string `json:"match_source_network,omitempty"`
 
-	// Default is true. If the nat_pass is set to true, the following firewall stage will be skipped. Please note, if action is NO_NAT, then nat_pass must be set to true or omitted.
-	NatPass bool `json:"nat_pass"`
-
 	// Ascending, valid range [0-2147483647]. If multiple rules have the same priority, evaluation sequence is undefined.
 	RulePriority int64 `json:"rule_priority,omitempty"`
 

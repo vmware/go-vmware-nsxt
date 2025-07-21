@@ -1,0 +1,68 @@
+{
+  "expression" : [ {
+    "member_type" : "Segment",
+    "key" : "Tag",
+    "operator" : "EQUALS",
+    "scope_operator" : "EQUALS",
+    "value" : "ncp/vnet|mgr-nsx-kcl01-f8txn-vnet",
+    "resource_type" : "Condition",
+    "id" : "680d449c-e173-4236-818b-ca9b267f138d",
+    "path" : "/infra/domains/default/groups/sys-st-test-mgr-nsx-kcl01-cluster/condition-expressions/680d449c-e173-4236-818b-ca9b267f138d",
+    "relative_path" : "680d449c-e173-4236-818b-ca9b267f138d",
+    "parent_path" : "/infra/domains/default/groups/sys-st-test-mgr-nsx-kcl01-cluster",
+    "remote_path" : "/orgs/default/projects/default/infra/domains/default--labnsx01/groups/sys-st-test-mgr-nsx-kcl01-cluster/condition-expressions/680d449c-e173-4236-818b-ca9b267f138d",
+    "marked_for_delete" : false,
+    "overridden" : false,
+    "_protection" : "NOT_PROTECTED"
+  }, {
+    "conjunction_operator" : "OR",
+    "resource_type" : "ConjunctionOperator",
+    "id" : "9a4b89e8-3ddb-4a44-ad6c-9102f7a2ef0b",
+    "path" : "/infra/domains/default/groups/sys-st-test-mgr-nsx-kcl01-cluster/conjunction-expressions/9a4b89e8-3ddb-4a44-ad6c-9102f7a2ef0b",
+    "relative_path" : "9a4b89e8-3ddb-4a44-ad6c-9102f7a2ef0b",
+    "parent_path" : "/infra/domains/default/groups/sys-st-test-mgr-nsx-kcl01-cluster",
+    "remote_path" : "/orgs/default/projects/default/infra/domains/default--labnsx01/groups/sys-st-test-mgr-nsx-kcl01-cluster/conjunction-expressions/9a4b89e8-3ddb-4a44-ad6c-9102f7a2ef0b",
+    "marked_for_delete" : false,
+    "overridden" : false,
+    "_protection" : "NOT_PROTECTED"
+  }, {
+    "paths" : [ "/infra/domains/default/groups/NLB.PoolLB.[domain-c9:cd1ef085-727a-4d6d-8fe3-e06eb46aeb96_cl-lab-e3-ns-mgr-dev_mgr-nsx-kcl01_6443_bluov][domain-c9:cd1ef085-727a-4d6d-8fe3-e06eb46aeb96_92200236-7528-4201-ba3a-9bb9ac80a1c2]" ],
+    "resource_type" : "PathExpression",
+    "id" : "c77a5920-399b-4d14-a7f3-77615acfc231",
+    "path" : "/infra/domains/default/groups/sys-st-test-mgr-nsx-kcl01-cluster/path-expressions/c77a5920-399b-4d14-a7f3-77615acfc231",
+    "relative_path" : "c77a5920-399b-4d14-a7f3-77615acfc231",
+    "parent_path" : "/infra/domains/default/groups/sys-st-test-mgr-nsx-kcl01-cluster",
+    "remote_path" : "/orgs/default/projects/default/infra/domains/default--labnsx01/groups/sys-st-test-mgr-nsx-kcl01-cluster/path-expressions/c77a5920-399b-4d14-a7f3-77615acfc231",
+    "marked_for_delete" : false,
+    "overridden" : false,
+    "_protection" : "NOT_PROTECTED"
+  } ],
+  "extended_expression" : [ ],
+  "reference" : false,
+  "resource_type" : "Group",
+  "id" : "sys-st-test-mgr-nsx-kcl01-cluster",
+  "display_name" : "sys-st-test-mgr-nsx-kcl01-cluster",
+  "tags" : [ {
+    "scope" : "st-prod-k8s-cluster-name",
+    "tag" : "sys-st-test-mgr-nsx-kcl01"
+  }, {
+    "scope" : "st-prod-supervisor-name",
+    "tag" : "cl-lab-e3"
+  } ],
+  "path" : "/infra/domains/default/groups/sys-st-test-mgr-nsx-kcl01-cluster",
+  "relative_path" : "sys-st-test-mgr-nsx-kcl01-cluster",
+  "parent_path" : "/infra/domains/default",
+  "remote_path" : "/orgs/default/projects/default/infra/domains/default--labnsx01/groups/sys-st-test-mgr-nsx-kcl01-cluster",
+  "unique_id" : "6e70d8b0-d6df-41b7-b5a1-f45c50a4d176",
+  "realization_id" : "6e70d8b0-d6df-41b7-b5a1-f45c50a4d176",
+  "owner_id" : "699816bf-42dc-4ba6-b41d-cff5b1615589",
+  "marked_for_delete" : false,
+  "overridden" : false,
+  "_create_time" : 1752782168230,
+  "_create_user" : "admin",
+  "_last_modified_time" : 1752782458609,
+  "_last_modified_user" : "admin",
+  "_system_owned" : false,
+  "_protection" : "NOT_PROTECTED",
+  "_revision" : 1
+}
