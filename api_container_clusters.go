@@ -17,7 +17,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/antihax/optional"
+	"github.com/vmware/go-vmware-nsxt/common/optional"
 	"github.com/vmware/go-vmware-nsxt/containerinventory"
 )
 
@@ -31,8 +31,8 @@ type ManagementPlaneApiFabricContainerClustersApiService service
 /*
 ManagementPlaneApiFabricContainerClustersApiService Add a container cluster
 Add a container cluster
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param containerCluster
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param containerCluster
 
 @return ContainerCluster
 */
@@ -116,10 +116,8 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) AddContainerCluste
 /*
 ManagementPlaneApiFabricContainerClustersApiService Delete a container cluster
 Delete a container cluster and objects discovered from that cluster
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param containerClusterId
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param containerClusterId
 */
 func (a *ManagementPlaneApiFabricContainerClustersApiService) DeleteContainerCluster(ctx context.Context, containerClusterId string) (*http.Response, error) {
 	var (
@@ -191,8 +189,8 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) DeleteContainerClu
 /*
 ManagementPlaneApiFabricContainerClustersApiService Return a container cluster
 Returns information about a specific container cluster
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param containerClusterId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param containerClusterId
 
 @return ContainerCluster
 */
@@ -275,8 +273,8 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerCluste
 /*
 ManagementPlaneApiFabricContainerClustersApiService Return a container cluster node
 Returns information about a specific container cluster node.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param containerClusterNodeId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param containerClusterNodeId
 
 @return ContainerClusterNode
 */
@@ -359,8 +357,8 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerCluste
 /*
 ManagementPlaneApiFabricContainerClustersApiService Returns an ingress policy spec
 Returns information about a specific ingress policy.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param ingressPolicyId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ingressPolicyId
 
 @return ContainerIngressPolicy
 */
@@ -443,8 +441,8 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) GetContainerIngres
 /*
 ManagementPlaneApiFabricContainerClustersApiService Return a network policy spec
 Returns information about a specific network policy.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param networkPolicyId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param networkPolicyId
 
 @return ContainerNetworkPolicy
 */
@@ -529,23 +527,23 @@ ManagementPlaneApiFabricContainerClustersApiService Return the list of container
 Returns information about all container cluster nodes.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ListContainerClusterNodesOpts - Optional Parameters:
-     * @param "ContainerClusterId" (optional.String) -  Identifier of the container cluster
-     * @param "Cursor" (optional.String) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
-     * @param "IncludedFields" (optional.String) -  Comma separated list of fields that should be included in query result
-     * @param "PageSize" (optional.Int64) -  Maximum number of results to return in this page (server may return fewer)
-     * @param "SortAscending" (optional.Bool) -
-     * @param "SortBy" (optional.String) -  Field by which records are sorted
+     * @param "ContainerClusterId" (Optional[string]) -  Identifier of the container cluster
+     * @param "Cursor" (Optional[string]) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
+     * @param "IncludedFields" (Optional[string]) -  Comma separated list of fields that should be included in query result
+     * @param "PageSize" (Optional[int64]) -  Maximum number of results to return in this page (server may return fewer)
+     * @param "SortAscending" (Optional[bool]) -
+     * @param "SortBy" (Optional[string]) -  Field by which records are sorted
 
 @return ContainerClusterNodeListResult
 */
 
 type ListContainerClusterNodesOpts struct {
-	ContainerClusterId optional.String
-	Cursor             optional.String
-	IncludedFields     optional.String
-	PageSize           optional.Int64
-	SortAscending      optional.Bool
-	SortBy             optional.String
+	ContainerClusterId optional.Optional[string]
+	Cursor             optional.Optional[string]
+	IncludedFields     optional.Optional[string]
+	PageSize           optional.Optional[int64]
+	SortAscending      optional.Optional[bool]
+	SortBy             optional.Optional[string]
 }
 
 func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerClusterNodes(ctx context.Context, localVarOptionals *ListContainerClusterNodesOpts) (containerinventory.ContainerClusterNodeListResult, *http.Response, error) {
@@ -565,22 +563,22 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerClust
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.ContainerClusterId.IsSet() {
-		localVarQueryParams.Add("container_cluster_id", parameterToString(localVarOptionals.ContainerClusterId.Value(), ""))
+		localVarQueryParams.Add("container_cluster_id", parameterToString(localVarOptionals.ContainerClusterId.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
-		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
+		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.IncludedFields.IsSet() {
-		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Value(), ""))
+		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
-		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortAscending.IsSet() {
-		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Value(), ""))
+		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortBy.IsSet() {
-		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Value(), ""))
+		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Get(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -646,25 +644,25 @@ ManagementPlaneApiFabricContainerClustersApiService Return the List of Container
 Returns information about all Container Clusters.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ListContainerClustersOpts - Optional Parameters:
-     * @param "ClusterType" (optional.String) -  Type of container cluster
-     * @param "Cursor" (optional.String) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
-     * @param "IncludedFields" (optional.String) -  Comma separated list of fields that should be included in query result
-     * @param "InfraType" (optional.String) -  Type of infrastructure
-     * @param "PageSize" (optional.Int64) -  Maximum number of results to return in this page (server may return fewer)
-     * @param "SortAscending" (optional.Bool) -
-     * @param "SortBy" (optional.String) -  Field by which records are sorted
+     * @param "ClusterType" (Optional[string]) -  Type of container cluster
+     * @param "Cursor" (Optional[string]) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
+     * @param "IncludedFields" (Optional[string]) -  Comma separated list of fields that should be included in query result
+     * @param "InfraType" (Optional[string]) -  Type of infrastructure
+     * @param "PageSize" (Optional[int64]) -  Maximum number of results to return in this page (server may return fewer)
+     * @param "SortAscending" (Optional[bool]) -
+     * @param "SortBy" (Optional[string]) -  Field by which records are sorted
 
 @return ContainerClusterListResult
 */
 
 type ListContainerClustersOpts struct {
-	ClusterType    optional.String
-	Cursor         optional.String
-	IncludedFields optional.String
-	InfraType      optional.String
-	PageSize       optional.Int64
-	SortAscending  optional.Bool
-	SortBy         optional.String
+	ClusterType    optional.Optional[string]
+	Cursor         optional.Optional[string]
+	IncludedFields optional.Optional[string]
+	InfraType      optional.Optional[string]
+	PageSize       optional.Optional[int64]
+	SortAscending  optional.Optional[bool]
+	SortBy         optional.Optional[string]
 }
 
 func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerClusters(ctx context.Context, localVarOptionals *ListContainerClustersOpts) (containerinventory.ContainerClusterListResult, *http.Response, error) {
@@ -684,25 +682,25 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerClust
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.ClusterType.IsSet() {
-		localVarQueryParams.Add("cluster_type", parameterToString(localVarOptionals.ClusterType.Value(), ""))
+		localVarQueryParams.Add("cluster_type", parameterToString(localVarOptionals.ClusterType.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
-		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
+		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.IncludedFields.IsSet() {
-		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Value(), ""))
+		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.InfraType.IsSet() {
-		localVarQueryParams.Add("infra_type", parameterToString(localVarOptionals.InfraType.Value(), ""))
+		localVarQueryParams.Add("infra_type", parameterToString(localVarOptionals.InfraType.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
-		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortAscending.IsSet() {
-		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Value(), ""))
+		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortBy.IsSet() {
-		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Value(), ""))
+		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Get(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -768,25 +766,25 @@ ManagementPlaneApiFabricContainerClustersApiService Return the List of Container
 Returns information about all ingress policies.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ListContainerIngressPoliciesOpts - Optional Parameters:
-     * @param "ContainerClusterId" (optional.String) -  Identifier of the container cluster
-     * @param "ContainerProjectId" (optional.String) -  Identifier of the container project
-     * @param "Cursor" (optional.String) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
-     * @param "IncludedFields" (optional.String) -  Comma separated list of fields that should be included in query result
-     * @param "PageSize" (optional.Int64) -  Maximum number of results to return in this page (server may return fewer)
-     * @param "SortAscending" (optional.Bool) -
-     * @param "SortBy" (optional.String) -  Field by which records are sorted
+     * @param "ContainerClusterId" (Optional[string]) -  Identifier of the container cluster
+     * @param "ContainerProjectId" (Optional[string]) -  Identifier of the container project
+     * @param "Cursor" (Optional[string]) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
+     * @param "IncludedFields" (Optional[string]) -  Comma separated list of fields that should be included in query result
+     * @param "PageSize" (Optional[int64]) -  Maximum number of results to return in this page (server may return fewer)
+     * @param "SortAscending" (Optional[bool]) -
+     * @param "SortBy" (Optional[string]) -  Field by which records are sorted
 
 @return ContainerIngressPolicyListResult
 */
 
 type ListContainerIngressPoliciesOpts struct {
-	ContainerClusterId optional.String
-	ContainerProjectId optional.String
-	Cursor             optional.String
-	IncludedFields     optional.String
-	PageSize           optional.Int64
-	SortAscending      optional.Bool
-	SortBy             optional.String
+	ContainerClusterId optional.Optional[string]
+	ContainerProjectId optional.Optional[string]
+	Cursor             optional.Optional[string]
+	IncludedFields     optional.Optional[string]
+	PageSize           optional.Optional[int64]
+	SortAscending      optional.Optional[bool]
+	SortBy             optional.Optional[string]
 }
 
 func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerIngressPolicies(ctx context.Context, localVarOptionals *ListContainerIngressPoliciesOpts) (containerinventory.ContainerIngressPolicyListResult, *http.Response, error) {
@@ -806,25 +804,25 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerIngre
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.ContainerClusterId.IsSet() {
-		localVarQueryParams.Add("container_cluster_id", parameterToString(localVarOptionals.ContainerClusterId.Value(), ""))
+		localVarQueryParams.Add("container_cluster_id", parameterToString(localVarOptionals.ContainerClusterId.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.ContainerProjectId.IsSet() {
-		localVarQueryParams.Add("container_project_id", parameterToString(localVarOptionals.ContainerProjectId.Value(), ""))
+		localVarQueryParams.Add("container_project_id", parameterToString(localVarOptionals.ContainerProjectId.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
-		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
+		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.IncludedFields.IsSet() {
-		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Value(), ""))
+		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
-		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortAscending.IsSet() {
-		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Value(), ""))
+		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortBy.IsSet() {
-		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Value(), ""))
+		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Get(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -890,25 +888,25 @@ ManagementPlaneApiFabricContainerClustersApiService Return the List of Container
 Returns information about all network policies.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ListContainerNetworkPoliciesOpts - Optional Parameters:
-     * @param "ContainerClusterId" (optional.String) -  Identifier of the container cluster
-     * @param "ContainerProjectId" (optional.String) -  Identifier of the container project
-     * @param "Cursor" (optional.String) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
-     * @param "IncludedFields" (optional.String) -  Comma separated list of fields that should be included in query result
-     * @param "PageSize" (optional.Int64) -  Maximum number of results to return in this page (server may return fewer)
-     * @param "SortAscending" (optional.Bool) -
-     * @param "SortBy" (optional.String) -  Field by which records are sorted
+     * @param "ContainerClusterId" (Optional[string]) -  Identifier of the container cluster
+     * @param "ContainerProjectId" (Optional[string]) -  Identifier of the container project
+     * @param "Cursor" (Optional[string]) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
+     * @param "IncludedFields" (Optional[string]) -  Comma separated list of fields that should be included in query result
+     * @param "PageSize" (Optional[int64]) -  Maximum number of results to return in this page (server may return fewer)
+     * @param "SortAscending" (Optional[bool]) -
+     * @param "SortBy" (Optional[string]) -  Field by which records are sorted
 
 @return ContainerNetworkPolicyListResult
 */
 
 type ListContainerNetworkPoliciesOpts struct {
-	ContainerClusterId optional.String
-	ContainerProjectId optional.String
-	Cursor             optional.String
-	IncludedFields     optional.String
-	PageSize           optional.Int64
-	SortAscending      optional.Bool
-	SortBy             optional.String
+	ContainerClusterId optional.Optional[string]
+	ContainerProjectId optional.Optional[string]
+	Cursor             optional.Optional[string]
+	IncludedFields     optional.Optional[string]
+	PageSize           optional.Optional[int64]
+	SortAscending      optional.Optional[bool]
+	SortBy             optional.Optional[string]
 }
 
 func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerNetworkPolicies(ctx context.Context, localVarOptionals *ListContainerNetworkPoliciesOpts) (containerinventory.ContainerNetworkPolicyListResult, *http.Response, error) {
@@ -928,25 +926,25 @@ func (a *ManagementPlaneApiFabricContainerClustersApiService) ListContainerNetwo
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.ContainerClusterId.IsSet() {
-		localVarQueryParams.Add("container_cluster_id", parameterToString(localVarOptionals.ContainerClusterId.Value(), ""))
+		localVarQueryParams.Add("container_cluster_id", parameterToString(localVarOptionals.ContainerClusterId.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.ContainerProjectId.IsSet() {
-		localVarQueryParams.Add("container_project_id", parameterToString(localVarOptionals.ContainerProjectId.Value(), ""))
+		localVarQueryParams.Add("container_project_id", parameterToString(localVarOptionals.ContainerProjectId.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
-		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
+		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.IncludedFields.IsSet() {
-		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Value(), ""))
+		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
-		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortAscending.IsSet() {
-		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Value(), ""))
+		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortBy.IsSet() {
-		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Value(), ""))
+		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Get(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
