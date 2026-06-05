@@ -16,8 +16,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/antihax/optional"
 	"github.com/vmware/go-vmware-nsxt/clustercontrolplane"
+	"github.com/vmware/go-vmware-nsxt/common/optional"
 )
 
 // Linger please
@@ -30,11 +30,12 @@ type SystemAdministrationPolicyClusterControlPlaneApiService service
 /*
 SystemAdministrationPolicyClusterControlPlaneApiService Create or Update Cluster Control Plane to NSX-T
 Joins a Cluster Control Plane to NSX-T.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body
- * @param siteId
- * @param enforcementpointId
- * @param clusterControlPlaneId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body
+  - @param siteId
+  - @param enforcementpointId
+  - @param clusterControlPlaneId
+
 @return ClusterControlPlane
 */
 func (a *SystemAdministrationPolicyClusterControlPlaneApiService) CreateOrUpdateClusterControlPlane(ctx context.Context, body clustercontrolplane.ClusterControlPlane, siteId string, enforcementpointId string, clusterControlPlaneId string) (clustercontrolplane.ClusterControlPlane, *http.Response, error) {
@@ -124,12 +125,12 @@ Removes a specified cluster control plane.
  * @param enforcementpointId
  * @param clusterControlPlaneId
  * @param optional nil or *DeleteClusterControlPlaneOpts - Optional Parameters:
-     * @param "Cascade" (optional.Bool) -  Flag to indicate if force delete cluster references from the firewall security policies
+     * @param "Cascade" (Optional[bool]) -  Flag to indicate if force delete cluster references from the firewall security policies
 
 */
 
 type DeleteClusterControlPlaneOpts struct {
-	Cascade optional.Bool
+	Cascade optional.Optional[bool]
 }
 
 func (a *SystemAdministrationPolicyClusterControlPlaneApiService) DeleteClusterControlPlane(ctx context.Context, siteId string, enforcementpointId string, clusterControlPlaneId string, localVarOptionals *DeleteClusterControlPlaneOpts) (*http.Response, error) {
@@ -151,7 +152,7 @@ func (a *SystemAdministrationPolicyClusterControlPlaneApiService) DeleteClusterC
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Cascade.IsSet() {
-		localVarQueryParams.Add("cascade", parameterToString(localVarOptionals.Cascade.Value(), ""))
+		localVarQueryParams.Add("cascade", parameterToString(localVarOptionals.Cascade.Get(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -208,10 +209,11 @@ func (a *SystemAdministrationPolicyClusterControlPlaneApiService) DeleteClusterC
 /*
 SystemAdministrationPolicyClusterControlPlaneApiService Return a specified cluster control plane.
 Returns a specified cluster control plane.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param siteId
- * @param enforcementpointId
- * @param clusterControlPlaneId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param siteId
+  - @param enforcementpointId
+  - @param clusterControlPlaneId
+
 @return ClusterControlPlane
 */
 func (a *SystemAdministrationPolicyClusterControlPlaneApiService) GetClusterControlPlane(ctx context.Context, siteId string, enforcementpointId string, clusterControlPlaneId string) (clustercontrolplane.ClusterControlPlane, *http.Response, error) {
@@ -298,22 +300,22 @@ Returns information about all cluster control planes.
  * @param siteId
  * @param enforcementpointId
  * @param optional nil or *ListClusterControlPlaneOpts - Optional Parameters:
-     * @param "Cursor" (optional.String) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
-     * @param "IncludeMarkForDeleteObjects" (optional.Bool) -  Include objects that are marked for deletion in results
-     * @param "IncludedFields" (optional.String) -  Comma separated list of fields that should be included in query result
-     * @param "PageSize" (optional.Int64) -  Maximum number of results to return in this page (server may return fewer)
-     * @param "SortAscending" (optional.Bool) -
-     * @param "SortBy" (optional.String) -  Field by which records are sorted
+     * @param "Cursor" (Optional[string]) -  Opaque cursor to be used for getting next page of records (supplied by current result page)
+     * @param "IncludeMarkForDeleteObjects" (Optional[bool]) -  Include objects that are marked for deletion in results
+     * @param "IncludedFields" (Optional[string]) -  Comma separated list of fields that should be included in query result
+     * @param "PageSize" (Optional[int64]) -  Maximum number of results to return in this page (server may return fewer)
+     * @param "SortAscending" (Optional[bool]) -
+     * @param "SortBy" (Optional[string]) -  Field by which records are sorted
 @return ClusterControlPlaneListResult
 */
 
 type ListClusterControlPlaneOpts struct {
-	Cursor                      optional.String
-	IncludeMarkForDeleteObjects optional.Bool
-	IncludedFields              optional.String
-	PageSize                    optional.Int64
-	SortAscending               optional.Bool
-	SortBy                      optional.String
+	Cursor                      optional.Optional[string]
+	IncludeMarkForDeleteObjects optional.Optional[bool]
+	IncludedFields              optional.Optional[string]
+	PageSize                    optional.Optional[int64]
+	SortAscending               optional.Optional[bool]
+	SortBy                      optional.Optional[string]
 }
 
 func (a *SystemAdministrationPolicyClusterControlPlaneApiService) ListClusterControlPlane(ctx context.Context, siteId string, enforcementpointId string, localVarOptionals *ListClusterControlPlaneOpts) (clustercontrolplane.ClusterControlPlaneListResult, *http.Response, error) {
@@ -335,22 +337,22 @@ func (a *SystemAdministrationPolicyClusterControlPlaneApiService) ListClusterCon
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
-		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
+		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.IncludeMarkForDeleteObjects.IsSet() {
-		localVarQueryParams.Add("include_mark_for_delete_objects", parameterToString(localVarOptionals.IncludeMarkForDeleteObjects.Value(), ""))
+		localVarQueryParams.Add("include_mark_for_delete_objects", parameterToString(localVarOptionals.IncludeMarkForDeleteObjects.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.IncludedFields.IsSet() {
-		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Value(), ""))
+		localVarQueryParams.Add("included_fields", parameterToString(localVarOptionals.IncludedFields.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.PageSize.IsSet() {
-		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Value(), ""))
+		localVarQueryParams.Add("page_size", parameterToString(localVarOptionals.PageSize.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortAscending.IsSet() {
-		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Value(), ""))
+		localVarQueryParams.Add("sort_ascending", parameterToString(localVarOptionals.SortAscending.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.SortBy.IsSet() {
-		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Value(), ""))
+		localVarQueryParams.Add("sort_by", parameterToString(localVarOptionals.SortBy.Get(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -413,11 +415,12 @@ func (a *SystemAdministrationPolicyClusterControlPlaneApiService) ListClusterCon
 /*
 SystemAdministrationPolicyClusterControlPlaneApiService Patch a Cluster Control Plane.
 Patch a Cluster Control Plane.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body
- * @param siteId
- * @param enforcementpointId
- * @param clusterControlPlaneId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body
+  - @param siteId
+  - @param enforcementpointId
+  - @param clusterControlPlaneId
+
 @return ClusterControlPlane
 */
 func (a *SystemAdministrationPolicyClusterControlPlaneApiService) PatchClusterControlPlane(ctx context.Context, body clustercontrolplane.ClusterControlPlane, siteId string, enforcementpointId string, clusterControlPlaneId string) (clustercontrolplane.ClusterControlPlane, *http.Response, error) {

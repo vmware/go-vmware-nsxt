@@ -16,7 +16,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/antihax/optional"
+	"github.com/vmware/go-vmware-nsxt/common/optional"
 	"github.com/vmware/go-vmware-nsxt/supportbundle"
 )
 
@@ -33,15 +33,15 @@ Collect support bundles from registered cluster and fabric nodes.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param supportBundleRequest
  * @param optional nil or *SupportBundleApiCollectSupportBundlesCollectOpts - Optional Parameters:
-     * @param "OverrideAsyncResponse" (optional.Bool) -  Override any existing support bundle async response
-     * @param "RequireDeleteOrOverrideAsyncResponse" (optional.Bool) -  Suppress auto-deletion of generated support bundle
+     * @param "OverrideAsyncResponse" (Optional[bool]) -  Override any existing support bundle async response
+     * @param "RequireDeleteOrOverrideAsyncResponse" (Optional[bool]) -  Suppress auto-deletion of generated support bundle
 
 @return SupportBundleResult
 */
 
 type SupportBundleApiCollectSupportBundlesCollectOpts struct {
-	OverrideAsyncResponse                optional.Bool
-	RequireDeleteOrOverrideAsyncResponse optional.Bool
+	OverrideAsyncResponse                optional.Optional[bool]
+	RequireDeleteOrOverrideAsyncResponse optional.Optional[bool]
 }
 
 func (a *SupportBundleApiService) CollectSupportBundlesCollect(ctx context.Context, supportBundleRequest supportbundle.SupportBundleRequest, localVarOptionals *SupportBundleApiCollectSupportBundlesCollectOpts) (supportbundle.SupportBundleResult, *http.Response, error) {
@@ -61,10 +61,10 @@ func (a *SupportBundleApiService) CollectSupportBundlesCollect(ctx context.Conte
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.OverrideAsyncResponse.IsSet() {
-		localVarQueryParams.Add("override_async_response", parameterToString(localVarOptionals.OverrideAsyncResponse.Value(), ""))
+		localVarQueryParams.Add("override_async_response", parameterToString(localVarOptionals.OverrideAsyncResponse.Get(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.RequireDeleteOrOverrideAsyncResponse.IsSet() {
-		localVarQueryParams.Add("require_delete_or_override_async_response", parameterToString(localVarOptionals.RequireDeleteOrOverrideAsyncResponse.Value(), ""))
+		localVarQueryParams.Add("require_delete_or_override_async_response", parameterToString(localVarOptionals.RequireDeleteOrOverrideAsyncResponse.Get(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -128,9 +128,7 @@ func (a *SupportBundleApiService) CollectSupportBundlesCollect(ctx context.Conte
 /*
 SupportBundleApiService Delete existing support bundles waiting to be downloaded
 Delete existing support bundles waiting to be downloaded.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 */
 func (a *SupportBundleApiService) DeleteSupportBundlesAsyncResponseDeleteAsyncResponse(ctx context.Context) (*http.Response, error) {
 	var (
